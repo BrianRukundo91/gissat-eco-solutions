@@ -5,6 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Linkedin, Mail, Users2, ChevronRight } from "lucide-react";
 
+// Team member photos
+import HMPhoto from "@/assets/team/HM.png";
+import PKPhoto from "@/assets/team/PK.png";
+import ITPhoto from "@/assets/team/IT.png";
+import IBPhoto from "@/assets/team/IB.png";
+import ICPhoto from "@/assets/team/IC.png";
+
 interface TeamMember {
   name: string;
   role: string;
@@ -12,6 +19,7 @@ interface TeamMember {
   fullBio: string[];
   specialties: string[];
   memberships?: string[];
+  photo: string;
 }
 
 const Team = () => {
@@ -46,7 +54,8 @@ const Team = () => {
         "NEMA-registered EIA Practitioner (Team Leader)",
         "NEMA-registered Environmental Auditor (Team Leader)",
         "Uganda Association of Impact Assessment Practitioners (UAIA)"
-      ]
+      ],
+      photo: HMPhoto
     },
     {
       name: "Peacekinz Kweezi",
@@ -70,7 +79,8 @@ const Team = () => {
         "Society of Economic Geologists, Cardiff (SEG)",
         "Rotaract Muyenga",
         "40/40 Charity Organization, Uganda"
-      ]
+      ],
+      photo: PKPhoto
     },
     {
       name: "Irene Tuhaise",
@@ -90,7 +100,8 @@ const Team = () => {
       memberships: [
         "Uganda Association of Impact Assessment",
         "Environmental Engineering and Management Association of Kyambogo University"
-      ]
+      ],
+      photo: ITPhoto
     },
     {
       name: "Ibrah Muluya",
@@ -106,7 +117,8 @@ const Team = () => {
         "Process Development",
         "Cross-departmental Coordination",
         "Operational Efficiency"
-      ]
+      ],
+      photo: IBPhoto
     },
     {
       name: "Isaiah Cula",
@@ -124,7 +136,8 @@ const Team = () => {
         "Resettlement Action Plans",
         "World Bank ESF Policies",
         "Socio-economic Surveys"
-      ]
+      ],
+      photo: ICPhoto
     }
   ];
 
@@ -162,11 +175,13 @@ const Team = () => {
           {teamMembers.map((member, index) => (
             <Card key={index} className="group hover:shadow-lg transition-all duration-300">
               <CardHeader className="text-center pb-4">
-                {/* Profile image placeholder */}
-                <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-primary">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+                {/* Profile image */}
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-300 ring-2 ring-primary/20">
+                  <img 
+                    src={member.photo} 
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                   {member.name}
@@ -207,10 +222,12 @@ const Team = () => {
                   <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
                     <DialogHeader>
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
-                          <span className="text-xl font-bold text-primary">
-                            {member.name.split(' ').map(n => n[0]).join('')}
-                          </span>
+                        <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-primary/20">
+                          <img 
+                            src={member.photo} 
+                            alt={member.name}
+                            className="w-full h-full object-cover object-top"
+                          />
                         </div>
                         <div>
                           <DialogTitle className="text-2xl">{member.name}</DialogTitle>
