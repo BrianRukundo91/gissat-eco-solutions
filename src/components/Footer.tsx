@@ -1,5 +1,6 @@
-import { Leaf, Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo_gissat.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,17 +24,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-card text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
         <div className="py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <Leaf className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold">Gissat</span>
+            <div className="mb-4">
+              <img src={logo} alt="Gissat Inc - For Exceptional Eco Solutions" className="h-12 w-auto brightness-0 invert" />
             </div>
             <p className="text-background/80 mb-6 leading-relaxed">
               Uganda's leading environmental consultancy since 1991. 
