@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,11 +46,11 @@ All colors MUST be HSL.
     --light-green: 85 40% 60%;
     --warm-gray: 140 5% 45%;
     --light-gray: 140 5% 85%;
-    
+
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(85 60% 50%), hsl(140 25% 25%));
     --gradient-hero: linear-gradient(135deg, hsl(140 25% 18%), hsl(140 30% 25%));
-    
+
     /* Shadows */
     --shadow-soft: 0 4px 6px -1px hsl(0 0% 0% / 0.2);
     --shadow-medium: 0 10px 15px -3px hsl(0 0% 0% / 0.2);
@@ -63,6 +66,9 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 140 15% 30%;
     --sidebar-ring: 85 60% 50%;
+    --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    --font-serif: "Crimson Pro", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
   .dark {
@@ -101,6 +107,9 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    --font-serif: "Crimson Pro", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 }
 
