@@ -8,67 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 152 20% 15%;
+    --background: 140 25% 20%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 152 20% 15%;
+    --card: 140 20% 25%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 152 20% 15%;
+    --popover: 140 20% 22%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 152 50% 25%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 85 60% 50%;
+    --primary-foreground: 140 30% 15%;
 
-    --secondary: 152 15% 95%;
-    --secondary-foreground: 152 50% 25%;
+    --secondary: 140 15% 30%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 152 15% 95%;
-    --muted-foreground: 152 10% 50%;
+    --muted: 140 15% 28%;
+    --muted-foreground: 140 10% 70%;
 
-    --accent: 200 50% 35%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 85 50% 45%;
+    --accent-foreground: 140 30% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 152 15% 90%;
-    --input: 152 15% 90%;
-    --ring: 152 50% 25%;
+    --border: 140 15% 30%;
+    --input: 140 15% 32%;
+    --ring: 85 60% 50%;
 
     /* Custom design tokens for Gissat */
-    --forest-green: 152 50% 25%;
-    --ocean-blue: 200 50% 35%;
-    --earth-brown: 25 30% 40%;
-    --sage-green: 152 15% 85%;
-    --warm-gray: 30 5% 50%;
+    --forest-green: 140 25% 20%;
+    --lime-green: 85 60% 50%;
+    --sage-green: 140 20% 35%;
+    --light-green: 85 40% 60%;
+    --warm-gray: 140 5% 45%;
+    --light-gray: 140 5% 85%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(152 50% 25%), hsl(200 50% 35%));
-    --gradient-hero: linear-gradient(135deg, hsl(152 50% 25% / 0.95), hsl(200 50% 35% / 0.95));
+    --gradient-primary: linear-gradient(135deg, hsl(85 60% 50%), hsl(140 25% 25%));
+    --gradient-hero: linear-gradient(135deg, hsl(140 25% 18%), hsl(140 30% 25%));
     
     /* Shadows */
-    --shadow-soft: 0 4px 6px -1px hsl(152 50% 25% / 0.1);
-    --shadow-medium: 0 10px 15px -3px hsl(152 50% 25% / 0.1);
-    --shadow-large: 0 25px 50px -12px hsl(152 50% 25% / 0.15);
+    --shadow-soft: 0 4px 6px -1px hsl(0 0% 0% / 0.2);
+    --shadow-medium: 0 10px 15px -3px hsl(0 0% 0% / 0.2);
+    --shadow-large: 0 25px 50px -12px hsl(0 0% 0% / 0.3);
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 140 20% 22%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 85 60% 50%;
+    --sidebar-primary-foreground: 140 30% 15%;
+    --sidebar-accent: 140 15% 28%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 140 15% 30%;
+    --sidebar-ring: 85 60% 50%;
   }
 
   .dark {
