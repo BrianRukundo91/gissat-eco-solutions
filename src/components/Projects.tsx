@@ -6,6 +6,9 @@ import { MapPin, Calendar, CheckCircle, ExternalLink, ChevronRight } from "lucid
 
 // Project images
 import VocationalCenterImage from "@/assets/projects/vocational_dev_center.jpeg";
+import AnderitaBeachImage from "@/assets/projects/anderita_beach.jpg";
+import OnomoHotelImage from "@/assets/projects/onomo_hotel.jpg";
+import LatitudeHotelImage from "@/assets/projects/latitude_hotel.jpeg";
 
 interface Project {
   title: string;
@@ -14,6 +17,7 @@ interface Project {
   category: string;
   description: string;
   detailedDescription?: string[];
+  auditObjectives?: string[];
   outcome: string;
   image?: string;
   services: string[];
@@ -23,23 +27,54 @@ interface Project {
 const Projects = () => {
   const projects: Project[] = [
     {
+      title: "Environmental Compliance Audit for Anderita Beach Hotel and Ancillary Facilities",
+      location: "Plot 05, Nambi Road, Manyango 'II' Village, Entebbe Municipality, Wakiso District",
+      year: "2023",
+      category: "Hospitality",
+      description: "Comprehensive environmental audit for a beach resort facility to review operations, practices and infrastructure against the national regulatory framework.",
+      detailedDescription: [
+        "Anderita Beach Hotel Limited (ABHL) is a registered company with operations in the leisure and hospitality sector. They own and operate a beach resort facility. The facility is located on plot 5 in Manyango II within Entebbe Municipality. The resort's location offers a unique blend of proximity to the city and scenic lake views. This is a main attraction for potential patrons.",
+        "The objectives of the project among others included: To develop and diversify the tourism products and services; To develop tourism infrastructure and facilities; To promote and market the destination in national, regional and international markets; and To promote community involvement and enterprise development in the tourism economy.",
+        "Gissat was contracted to conduct an Environmental Audit to comprehensively review ABHL's operations, practices and infrastructure against the national regulatory framework, conditions in approval permits and best hotel management practices.",
+        "The Audit was carried out to also assess the impact of the Hotel's activities on the adjacent Lake Victoria. The operation of ABHL is subject to the provision of the National Environmental Act 2019.",
+        "Gissat was contracted to carry out an audit in order to meet all the required regulations. This task required reviewing previous audit reports, facility inspections as well as stakeholder consultations. This helped to understand the project components and ongoing activities at the resort."
+      ],
+      auditObjectives: [
+        "Air and Noise pollution",
+        "Water pollution Control",
+        "Occupational Health and Safety",
+        "Wastewater management"
+      ],
+      outcome: "Comprehensive review of operations against regulatory framework, assessment of Lake Victoria impact, and recommendations for environmental compliance.",
+      image: AnderitaBeachImage,
+      services: ["Environmental Compliance Audit", "Regulatory Review", "Impact Assessment"],
+      status: "Completed"
+    },
+    {
+      title: "Onomo Hotel Kampala",
+      location: "Akii Bua Road, Nakasero, Kampala",
+      year: "2023",
+      category: "Hospitality",
+      description: "Environmental and Social Impact Assessment for the Development of Onomo Kampala Hotel – part of the Onomo Hotel Chain with hotels in Western and Eastern African region.",
+      detailedDescription: [
+        "An Environmental Impact Assessment was conducted for the Onomo Kampala Hotel – part of the Onomo Hotel Chain with hotels in Western and Eastern African region.",
+        "The assessment included extensive public consultation and involvement processes and numerous detailed specialist investigations.",
+        "Positive Record of Decision was issued for the facility by the National Environment Management Authority (NEMA)."
+      ],
+      outcome: "Positive Record of Decision issued by NEMA following comprehensive ESIA with extensive public consultation.",
+      image: OnomoHotelImage,
+      services: ["ESIA", "Public Consultation", "Specialist Investigations"],
+      status: "Completed"
+    },
+    {
       title: "Latitude 0 Degrees, Kampala",
       location: "Kampala, Uganda",
       year: "2023",
       category: "Commercial Development",
       description: "Comprehensive environmental impact assessment and management plan for a major commercial development project in Kampala's central business district.",
       outcome: "Successfully obtained environmental certificate with zero non-compliance issues. Project achieved 30% reduction in projected environmental impact through our mitigation strategies.",
+      image: LatitudeHotelImage,
       services: ["EIA", "Environmental Permits", "Compliance Monitoring"],
-      status: "Completed"
-    },
-    {
-      title: "Broiler Breeder Poultry Farm",
-      location: "Wakiso District, Uganda",
-      year: "2022",
-      category: "Agricultural Development",
-      description: "Environmental assessment and sustainable farming practices implementation for a large-scale poultry operation focusing on waste management and biosafety.",
-      outcome: "Established industry-leading waste management system resulting in 95% waste recycling rate and compliance with all environmental standards.",
-      services: ["Waste Management", "Environmental Audits", "EMS Implementation"],
       status: "Completed"
     },
     {
@@ -55,7 +90,12 @@ const Projects = () => {
         "The study was carried out with the use of proper measurements, interviews and observations during the audit of Vocational Development Centre to ensure that the facility's operations are in line with relevant regulations. Findings and recommendations were made regarding the facility.",
         "The environmental audit was conducted according to systematic procedures and focused on verifying if the mitigation and monitoring measures specified in the ESMP conform to the ongoing and planned arrangements."
       ],
-      outcome: "The audit furthermore aimed at: Reporting the level of compliance with the conditions of the environmental authorisation; Reporting the extent to which the avoidance, management and mitigation measures provided in the Environment and Social Management Plan achieve the objectives and outcomes; Identifying and assessing any new impacts and risks as a result of undertaking the activity.",
+      auditObjectives: [
+        "Reporting the level of compliance with the conditions of the environmental authorisation",
+        "Reporting the extent to which the avoidance, management and mitigation measures provided in the Environment and Social Management Plan achieve the objectives and outcomes",
+        "Identifying and assessing any new impacts and risks as a result of undertaking the activity"
+      ],
+      outcome: "Comprehensive compliance review with recommendations for ongoing environmental management.",
       image: VocationalCenterImage,
       services: ["Environmental Compliance Audit", "ESMP Assessment", "Regulatory Compliance Review"],
       status: "Completed"
@@ -77,7 +117,7 @@ const Projects = () => {
         </div>
 
         {/* Projects grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
           {projects.map((project, index) => (
             <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
               {/* Project image */}
@@ -170,14 +210,18 @@ const Projects = () => {
                           ))}
                         </div>
 
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-2">Audit Objectives</h4>
-                          <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                            <li>Reporting the level of compliance with the conditions of the environmental authorisation</li>
-                            <li>Reporting the extent to which the avoidance, management and mitigation measures provided in the Environment and Social Management Plan achieve the objectives and outcomes</li>
-                            <li>Identifying and assessing any new impacts and risks as a result of undertaking the activity</li>
-                          </ul>
-                        </div>
+                        {project.auditObjectives && (
+                          <div>
+                            <h4 className="font-semibold text-foreground mb-2">
+                              {project.title.includes("Anderita") ? "Areas of Emphasis During Audit" : "Audit Objectives"}
+                            </h4>
+                            <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                              {project.auditObjectives.map((objective, idx) => (
+                                <li key={idx}>{objective}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
 
                         <div>
                           <h4 className="font-semibold text-foreground mb-2">Services Provided</h4>

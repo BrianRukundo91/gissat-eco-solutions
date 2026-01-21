@@ -1,73 +1,34 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { MapPin, Clock, Users, GraduationCap, ArrowRight, Heart } from "lucide-react";
+import { CheckCircle, Award, Users, Globe, Heart, Briefcase } from "lucide-react";
 
 const Careers = () => {
-  const jobOpenings = [
+  const whyJoinReasons = [
     {
-      title: "Senior Environmental Consultant",
-      department: "Environmental Services",
-      type: "Full-time",
-      location: "Kampala, Uganda",
-      experience: "5+ years",
-      description: "Lead environmental impact assessments and manage client relationships for major infrastructure and industrial projects across East Africa.",
-      requirements: [
-        "Master's degree in Environmental Science or related field",
-        "Minimum 5 years experience in environmental consulting",
-        "Professional certification in environmental auditing",
-        "Strong project management and client communication skills"
-      ],
-      benefits: ["Competitive salary", "Health insurance", "Professional development", "Flexible working"]
-    },
-    {
-      title: "GIS Analyst & Spatial Planning Specialist",
-      department: "Technical Services",
-      type: "Full-time",
-      location: "Kampala, Uganda",
-      experience: "3+ years",
-      description: "Provide GIS analysis and spatial planning support for environmental assessments and sustainable development projects.",
-      requirements: [
-        "Bachelor's degree in GIS, Geography, or related field",
-        "Proficiency in ArcGIS, QGIS, and remote sensing software",
-        "Experience with environmental and land use planning",
-        "Strong analytical and data visualization skills"
-      ],
-      benefits: ["Competitive salary", "Training opportunities", "Health insurance", "Transport allowance"]
-    },
-    {
-      title: "Environmental Compliance Officer",
-      department: "Compliance & Monitoring",
-      type: "Full-time",
-      location: "Kampala, Uganda",
-      experience: "2+ years",
-      description: "Monitor and ensure client compliance with environmental regulations and standards. Conduct site inspections and prepare compliance reports.",
-      requirements: [
-        "Bachelor's degree in Environmental Science or Law",
-        "Knowledge of Uganda's environmental regulations",
-        "Field work experience and ability to travel",
-        "Excellent report writing and communication skills"
-      ],
-      benefits: ["Professional growth", "Field allowances", "Health insurance", "Performance bonuses"]
-    }
-  ];
-
-  const companyBenefits = [
-    {
-      icon: Heart,
-      title: "Work-Life Balance",
-      description: "Flexible working arrangements and generous leave policies to ensure you maintain a healthy work-life balance."
-    },
-    {
-      icon: GraduationCap,
-      title: "Professional Development",
-      description: "Continuous learning opportunities, conference attendance, and support for professional certifications."
+      icon: Award,
+      title: "Prestigious Projects",
+      description: "Delivering prestigious, life-changing, and innovative projects creates a business we can be proud to work for."
     },
     {
       icon: Users,
-      title: "Collaborative Environment",
-      description: "Work alongside experienced professionals in a supportive team environment that values innovation and expertise."
+      title: "The People",
+      description: "We have an incredibly diverse range of people working towards common goals, and we set new standards of excellence as we go. As a result, our offices have a great atmosphere, and our people enjoy their work."
+    },
+    {
+      icon: Globe,
+      title: "Sustainability",
+      description: "For us, sustainability is about using our own ingenuity to deliver lasting value for our clients, for the communities where we work, and for ourselves. It is about crossing the boundaries of conventional thinking to deliver efficiencies and unleash innovation in our solutions, advancing sustained economic, social, and environmental well-being."
     }
+  ];
+
+  const staffFeedback = [
+    "High ethics / morals / standards",
+    "Diversity of work both in scale and complexity",
+    "Good reputation",
+    "Flexible work conditions",
+    "Work opportunities at regional and national levels",
+    "Supportive and friendly environment",
+    "Considerate leave entitlements"
   ];
 
   return (
@@ -76,36 +37,78 @@ const Careers = () => {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Join Our Team
+            Careers at Gissat
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Build your career with Uganda's leading environmental consultancy. 
-            We're looking for passionate professionals who share our commitment 
-            to environmental excellence and sustainable development.
+            Build your career with Uganda's leading environmental consultancy.
           </p>
         </div>
 
-        {/* Company culture and benefits */}
+        {/* About working at Gissat */}
+        <div className="mb-16">
+          <Card className="bg-background">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Briefcase className="w-8 h-8 text-primary" />
+                    <h3 className="text-2xl font-bold text-foreground">Join Our Team</h3>
+                  </div>
+                  <div className="space-y-4 text-muted-foreground leading-relaxed">
+                    <p>
+                      Gissat offers the experience and insight gained from more than 500 projects. Our growth and success is attributable to one key factor – our people! We invest highly in professional development and allow the opportunity for each employee to provide feedback in the direction of our business.
+                    </p>
+                    <p>
+                      As experts in a variety of environmental disciplines, we are committed to collaborate in a workplace enabling inspired, innovative and cutting-edge solutions.
+                    </p>
+                    <p>
+                      We have an excellent track record for successfully managing complex multidisciplinary and specialist studies for major strategic and development projects. Although we have grown considerably over the last few years, we pride ourselves on the fact that we have been able to maintain a "small company feel" as well as a very positive and cooperative culture amongst our employees.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Heart className="w-8 h-8 text-primary" />
+                    <h3 className="text-xl font-bold text-foreground">What Our Staff Say</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    The advantage of choosing a career with Gissat is best summarized by the feedback received at a recent staff development day:
+                  </p>
+                  <ul className="space-y-2">
+                    {staffFeedback.map((feedback, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-muted-foreground">{feedback}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Why Join Gissat */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">
-            Why Work at Gissat?
+            Why Join Gissat?
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
-            {companyBenefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
+            {whyJoinReasons.map((reason, index) => {
+              const IconComponent = reason.icon;
               return (
-                <Card key={index} className="text-center">
+                <Card key={index} className="text-center bg-background">
                   <CardHeader>
                     <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
                       <IconComponent className="w-8 h-8 text-primary" />
                     </div>
                     <CardTitle className="text-xl font-semibold text-foreground">
-                      {benefit.title}
+                      {reason.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
-                      {benefit.description}
+                      {reason.description}
                     </p>
                   </CardContent>
                 </Card>
@@ -114,96 +117,19 @@ const Careers = () => {
           </div>
         </div>
 
-        {/* Current job openings */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-foreground text-center mb-8">
-            Current Opportunities
-          </h3>
-          <div className="space-y-6">
-            {jobOpenings.map((job, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between space-y-4 md:space-y-0">
-                    <div className="flex-1">
-                      <CardTitle className="text-xl font-semibold text-foreground mb-2">
-                        {job.title}
-                      </CardTitle>
-                      <CardDescription className="text-muted-foreground mb-4">
-                        {job.description}
-                      </CardDescription>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center space-x-1">
-                          <MapPin className="w-4 h-4" />
-                          <span>{job.location}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{job.type}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <GraduationCap className="w-4 h-4" />
-                          <span>{job.experience}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-col space-y-2">
-                      <Badge variant="secondary">{job.department}</Badge>
-                      <Button className="w-full md:w-auto">
-                        Apply Now
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {/* Requirements */}
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Key Requirements:</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {job.requirements.map((requirement, reqIndex) => (
-                        <li key={reqIndex} className="flex items-start space-x-2">
-                          <span className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0 mt-2"></span>
-                          <span>{requirement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Benefits */}
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Benefits:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {job.benefits.map((benefit, benefitIndex) => (
-                        <Badge key={benefitIndex} variant="outline" className="text-xs">
-                          {benefit}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
         {/* Application call-to-action */}
         <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Don't See the Right Position?
+            Ready to Make a Difference?
           </h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             We're always looking for talented individuals to join our team. 
             Send us your CV and tell us how you'd like to contribute to Uganda's 
             environmental sustainability efforts.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg">
-              Submit General Application
-            </Button>
-            <Button variant="outline" size="lg">
-              View Company Culture
-            </Button>
-          </div>
+          <Button size="lg">
+            Submit General Application
+          </Button>
         </div>
       </div>
     </section>
