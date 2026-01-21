@@ -27,17 +27,17 @@ const Footer = () => {
     <footer className="bg-card text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
-        <div className="py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-10 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company info */}
-          <div className="lg:col-span-1">
-            <div className="mb-4">
-              <img src={logo} alt="Gissat Inc - For Exceptional Eco Solutions" className="h-12 w-auto brightness-0 invert" />
+          <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-left">
+            <div className="mb-4 flex justify-center sm:justify-start">
+              <img src={logo} alt="Gissat Inc - For Exceptional Eco Solutions" className="h-10 sm:h-12 w-auto brightness-0 invert" />
             </div>
-            <p className="text-background/80 mb-6 leading-relaxed">
+            <p className="text-background/80 mb-6 leading-relaxed text-sm sm:text-base">
               Uganda's leading environmental consultancy since 1991. 
               Providing practical environmental solutions for sustainable development.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center sm:justify-start">
               <Button variant="ghost" size="icon" className="text-background/80 hover:text-background hover:bg-background/10">
                 <Linkedin className="w-5 h-5" />
               </Button>

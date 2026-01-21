@@ -7,10 +7,10 @@ const Hero = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzA0Nzg1NyIgZmlsbC1vcGFjaXR5PSIwLjAzIj4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjciLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-50"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 pt-24 sm:pt-20 relative z-10">
         <div className="text-center">
           {/* Main heading */}
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
             <span className="block">Practical Environmental</span>
             <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Solutions for Sustainable
@@ -19,7 +19,7 @@ const Hero = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
             Gissat is Uganda's leading environmental consultancy, providing comprehensive 
             environmental solutions since 1991. We help organizations achieve sustainable 
             development through expert environmental management and compliance services.
@@ -37,34 +37,34 @@ const Hero = () => {
           </div>
 
           {/* Quick stats/highlights */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 mb-12 sm:mb-16">
             <div className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 bg-primary/10 rounded-full flex items-center justify-center">
-                <Award className="w-6 h-6 text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-primary/10 rounded-full flex items-center justify-center">
+                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
-              <p className="text-2xl font-bold text-primary">30+</p>
-              <p className="text-sm text-muted-foreground">Years Experience</p>
+              <p className="text-xl sm:text-2xl font-bold text-primary">30+</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Years Experience</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 bg-accent/10 rounded-full flex items-center justify-center">
-                <Users className="w-6 h-6 text-accent" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-accent/10 rounded-full flex items-center justify-center">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </div>
-              <p className="text-2xl font-bold text-accent">500+</p>
-              <p className="text-sm text-muted-foreground">Projects Completed</p>
+              <p className="text-xl sm:text-2xl font-bold text-accent">500+</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Projects Completed</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 bg-primary/10 rounded-full flex items-center justify-center">
-                <Globe className="w-6 h-6 text-primary" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-primary/10 rounded-full flex items-center justify-center">
+                <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
-              <p className="text-2xl font-bold text-primary">6</p>
-              <p className="text-sm text-muted-foreground">Key Sectors</p>
+              <p className="text-xl sm:text-2xl font-bold text-primary">6</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Key Sectors</p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 bg-accent/10 rounded-full flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-accent" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-accent/10 rounded-full flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </div>
-              <p className="text-2xl font-bold text-accent">100%</p>
-              <p className="text-sm text-muted-foreground">Compliance Rate</p>
+              <p className="text-xl sm:text-2xl font-bold text-accent">100%</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Compliance Rate</p>
             </div>
           </div>
 
