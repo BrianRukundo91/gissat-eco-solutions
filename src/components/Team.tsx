@@ -5,9 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Linkedin, Mail, Users2, ChevronRight } from "lucide-react";
 
+// Team member photos
+import HMPhoto from "@/assets/team/HM.png";
+import PKPhoto from "@/assets/team/PK.png";
+import ITPhoto from "@/assets/team/IT.png";
+import IBPhoto from "@/assets/team/IB.png";
+import ICPhoto from "@/assets/team/IC.png";
+
 interface TeamMember {
   name: string;
   role: string;
+  photo: string;
   shortBio: string;
   fullBio: string[];
   specialties: string[];
@@ -19,6 +27,7 @@ const Team = () => {
     {
       name: "Harriet Mujuni",
       role: "Chief Executive Officer",
+      photo: HMPhoto,
       shortBio:
         "A lawyer and environmental policy analyst with over sixteen years' experience in environmental management at national and regional level.",
       fullBio: [
@@ -52,6 +61,7 @@ const Team = () => {
     {
       name: "Peacekinz Kweezi",
       role: "Chief Operations Manager",
+      photo: PKPhoto,
       shortBio:
         "A growth-focused and innovative leader leveraging over 6 years of professional experience in operations, finance, and environmental engineering.",
       fullBio: [
@@ -77,6 +87,7 @@ const Team = () => {
     {
       name: "Irene Tuhaise",
       role: "Senior Environmental Engineer",
+      photo: ITPhoto,
       shortBio:
         "Environmental engineer with over five years' experience in environmental consulting, project management, and team leadership.",
       fullBio: [
@@ -93,6 +104,7 @@ const Team = () => {
     {
       name: "Ibrah Muluya",
       role: "Principal Operations Officer",
+      photo: IBPhoto,
       shortBio:
         "A proactive Office Administrator with 8+ years of experience managing office operations and developing efficient administrative processes.",
       fullBio: [
@@ -110,6 +122,7 @@ const Team = () => {
     {
       name: "Isaiah Cula",
       role: "Social Safeguards Specialist",
+      photo: ICPhoto,
       shortBio:
         "Experienced specialist in field research, socio-economic surveys, stakeholder engagement, and social impact assessment processes.",
       fullBio: [
@@ -158,15 +171,12 @@ const Team = () => {
           {teamMembers.map((member, index) => (
             <Card key={index} className="group hover:shadow-lg transition-all duration-300">
               <CardHeader className="text-center pb-4">
-                {/* Profile image placeholder */}
-                <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-2xl font-bold text-primary">
-                    {member.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                </div>
+                {/* Profile image */}
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-24 h-24 mx-auto mb-4 rounded-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                />
                 <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                   {member.name}
                 </h3>
@@ -207,14 +217,11 @@ const Team = () => {
                   <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
                     <DialogHeader>
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
-                          <span className="text-xl font-bold text-primary">
-                            {member.name
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
-                          </span>
-                        </div>
+                        <img
+                          src={member.photo}
+                          alt={member.name}
+                          className="w-16 h-16 rounded-full object-cover object-top"
+                        />
                         <div>
                           <DialogTitle className="text-2xl">{member.name}</DialogTitle>
                           <p className="text-primary font-medium">{member.role}</p>
