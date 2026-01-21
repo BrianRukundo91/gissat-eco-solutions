@@ -142,24 +142,24 @@ const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-20 bg-secondary/30">
+    <section id="team" className="py-12 sm:py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Expert Team</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Expert Team</h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
             Meet the experienced professionals who drive Gissat's success. Our multidisciplinary team brings together
             decades of expertise in environmental consulting and sustainable development.
           </p>
         </div>
 
         {/* Team introduction */}
-        <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg p-8 mb-16 text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <Users2 className="w-8 h-8 text-primary" />
-            <h3 className="text-2xl font-bold text-foreground">Collaborative Excellence</h3>
+        <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg p-4 sm:p-8 mb-10 sm:mb-16 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2 mb-3 sm:mb-4">
+            <Users2 className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+            <h3 className="text-xl sm:text-2xl font-bold text-foreground">Collaborative Excellence</h3>
           </div>
-          <p className="text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-4xl mx-auto leading-relaxed">
             Our team's collaborative spirit and diverse expertise enable us to tackle the most complex environmental
             challenges. Each member brings unique skills and perspectives, ensuring comprehensive solutions that meet
             our clients' specific needs while advancing environmental sustainability across Uganda.
@@ -167,7 +167,7 @@ const Team = () => {
         </div>
 
         {/* Team members grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {teamMembers.map((member, index) => (
             <Card key={index} className="group hover:shadow-lg transition-all duration-300">
               <CardHeader className="text-center pb-4">

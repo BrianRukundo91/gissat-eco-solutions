@@ -32,29 +32,29 @@ const Careers = () => {
   ];
 
   return (
-    <section id="careers" className="py-20 bg-secondary/30">
+    <section id="careers" className="py-12 sm:py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
             Careers at Gissat
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
             Build your career with Uganda's leading environmental consultancy.
           </p>
         </div>
 
         {/* About working at Gissat */}
-        <div className="mb-16">
+        <div className="mb-10 sm:mb-16">
           <Card className="bg-background">
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-8">
+            <CardContent className="p-4 sm:p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <Briefcase className="w-8 h-8 text-primary" />
-                    <h3 className="text-2xl font-bold text-foreground">Join Our Team</h3>
+                  <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                    <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground">Join Our Team</h3>
                   </div>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
                     <p>
                       Gissat offers the experience and insight gained from more than 500 projects. Our growth and success is attributable to one key factor – our people! We invest highly in professional development and allow the opportunity for each employee to provide feedback in the direction of our business.
                     </p>
@@ -67,18 +67,18 @@ const Careers = () => {
                   </div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <Heart className="w-8 h-8 text-primary" />
-                    <h3 className="text-xl font-bold text-foreground">What Our Staff Say</h3>
+                  <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                    <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground">What Our Staff Say</h3>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
                     The advantage of choosing a career with Gissat is best summarized by the feedback received at a recent staff development day:
                   </p>
                   <ul className="space-y-2">
                     {staffFeedback.map((feedback, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground">{feedback}</span>
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-muted-foreground text-sm sm:text-base">{feedback}</span>
                       </li>
                     ))}
                   </ul>
@@ -89,25 +89,25 @@ const Careers = () => {
         </div>
 
         {/* Why Join Gissat */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-foreground text-center mb-8">
+        <div className="mb-10 sm:mb-16">
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground text-center mb-6 sm:mb-8">
             Why Join Gissat?
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {whyJoinReasons.map((reason, index) => {
               const IconComponent = reason.icon;
               return (
                 <Card key={index} className="text-center bg-background">
                   <CardHeader>
-                    <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                      <IconComponent className="w-8 h-8 text-primary" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                      <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
                     </div>
-                    <CardTitle className="text-xl font-semibold text-foreground">
+                    <CardTitle className="text-lg sm:text-xl font-semibold text-foreground">
                       {reason.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                       {reason.description}
                     </p>
                   </CardContent>

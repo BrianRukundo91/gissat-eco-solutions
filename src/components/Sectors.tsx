@@ -48,14 +48,14 @@ const Sectors = () => {
   ];
 
   return (
-    <section id="sectors" className="py-20 bg-background">
+    <section id="sectors" className="py-12 sm:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
             Sectors We Serve
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
             With over 30 years of experience, we provide specialized environmental 
             solutions across Uganda's key economic sectors, ensuring sustainable 
             development and regulatory compliance.
@@ -63,7 +63,7 @@ const Sectors = () => {
         </div>
 
         {/* Sectors grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {sectors.map((sector, index) => {
             const IconComponent = sector.icon;
             return (
