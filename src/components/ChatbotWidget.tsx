@@ -40,10 +40,10 @@ export default function ChatbotWidget() {
 
   const quickPrompts = useMemo(
     () => [
-      "What services do you offer for Environmental Impact Assessment (EIA)?",
+      "What services do you offer?",
       "Which sectors do you serve?",
-      "Show me an example project similar to a hotel development.",
-      "I need a quote for compliance monitoring.",
+      "Show me project examples",
+      "I need a quote",
     ],
     [],
   );
@@ -87,12 +87,12 @@ export default function ChatbotWidget() {
   return (
     <div className="fixed bottom-5 right-5 z-50">
       {open ? (
-        <Card className="w-[min(92vw,380px)] shadow-lg">
-          <CardHeader className="py-3">
+        <Card className="w-[min(92vw,360px)] shadow-lg border border-border">
+          <CardHeader className="py-3 bg-primary rounded-t-lg">
             <div className="flex items-center justify-between gap-3">
-              <CardTitle className="text-base">Gissat Assistant</CardTitle>
-              <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close chat">
-                <X />
+              <CardTitle className="text-base text-primary-foreground">Gissat Assistant</CardTitle>
+              <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close chat" className="text-primary-foreground hover:bg-primary/80">
+                <X className="h-4 w-4" />
               </Button>
             </div>
           </CardHeader>
@@ -139,9 +139,9 @@ export default function ChatbotWidget() {
             </ScrollArea>
 
             <div className="mt-3 grid gap-2">
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 gap-1.5">
                 {quickPrompts.map((p) => (
-                  <Button key={p} variant="outline" size="sm" onClick={() => send(p)} disabled={isLoading}>
+                  <Button key={p} variant="outline" size="sm" className="text-xs h-auto py-1.5 px-2 whitespace-normal text-left justify-start" onClick={() => send(p)} disabled={isLoading}>
                     {p}
                   </Button>
                 ))}
@@ -169,14 +169,19 @@ export default function ChatbotWidget() {
           </CardContent>
         </Card>
       ) : (
-        <Button
-          size="icon"
-          className="h-12 w-12 rounded-full shadow-lg"
-          onClick={() => setOpen(true)}
-          aria-label="Open chat"
-        >
-          <MessageCircle />
-        </Button>
+        <div className="flex items-center gap-2">
+          <span className="bg-primary text-primary-foreground text-sm font-medium px-3 py-2 rounded-full shadow-lg animate-pulse">
+            Chat with us!
+          </span>
+          <Button
+            size="icon"
+            className="h-12 w-12 rounded-full shadow-lg"
+            onClick={() => setOpen(true)}
+            aria-label="Open chat"
+          >
+            <MessageCircle className="h-5 w-5" />
+          </Button>
+        </div>
       )}
     </div>
   );
