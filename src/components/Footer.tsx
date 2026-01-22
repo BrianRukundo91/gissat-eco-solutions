@@ -49,13 +49,25 @@ const Footer = () => {
               sustainable development.
             </p>
             <div className="flex space-x-4 justify-center sm:justify-start">
-              <Button variant="ghost" size="icon" className="text-background/80 hover:text-background hover:bg-background/10">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-[0_0_12px_rgba(132,204,22,0.5)]"
+              >
                 <Linkedin className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-background/80 hover:text-background hover:bg-background/10">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-[0_0_12px_rgba(132,204,22,0.5)]"
+              >
                 <Twitter className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-background/80 hover:text-background hover:bg-background/10">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-[0_0_12px_rgba(132,204,22,0.5)]"
+              >
                 <Facebook className="w-5 h-5" />
               </Button>
             </div>
