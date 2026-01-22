@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { 
   Settings, 
   FileCheck, 
@@ -415,7 +416,7 @@ const Services = () => {
                             Read more
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-2xl">
+                        <DialogContent className="max-w-2xl max-h-[85vh] overflow-hidden">
                           <DialogHeader>
                             <DialogTitle>{service.readMore.title}</DialogTitle>
                             <DialogDescription className="mt-2">
@@ -423,31 +424,33 @@ const Services = () => {
                             </DialogDescription>
                           </DialogHeader>
 
-                          <div className="space-y-6">
-                            {service.readMore.sections?.map((section, sIdx) => (
-                              <div key={sIdx} className="space-y-3">
-                                {section.heading ? (
-                                  <h4 className="text-base font-semibold text-foreground">
-                                    {section.heading}
-                                  </h4>
-                                ) : null}
+                          <ScrollArea className="-mr-2 pr-2 max-h-[calc(85vh-9rem)]">
+                            <div className="space-y-6">
+                              {service.readMore.sections?.map((section, sIdx) => (
+                                <div key={sIdx} className="space-y-3">
+                                  {section.heading ? (
+                                    <h4 className="text-base font-semibold text-foreground">
+                                      {section.heading}
+                                    </h4>
+                                  ) : null}
 
-                                {section.paragraphs?.map((p, pIdx) => (
-                                  <p key={pIdx} className="text-sm text-muted-foreground leading-relaxed">
-                                    {p}
-                                  </p>
-                                ))}
+                                  {section.paragraphs?.map((p, pIdx) => (
+                                    <p key={pIdx} className="text-sm text-muted-foreground leading-relaxed">
+                                      {p}
+                                    </p>
+                                  ))}
 
-                                {section.bullets?.length ? (
-                                  <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-                                    {section.bullets.map((b, bIdx) => (
-                                      <li key={bIdx}>{b}</li>
-                                    ))}
-                                  </ul>
-                                ) : null}
-                              </div>
-                            ))}
-                          </div>
+                                  {section.bullets?.length ? (
+                                    <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+                                      {section.bullets.map((b, bIdx) => (
+                                        <li key={bIdx}>{b}</li>
+                                      ))}
+                                    </ul>
+                                  ) : null}
+                                </div>
+                              ))}
+                            </div>
+                          </ScrollArea>
                         </DialogContent>
                       </Dialog>
                     </div>
