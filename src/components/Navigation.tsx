@@ -43,7 +43,9 @@ const Navigation = () => {
           </div>
 
           <div className="hidden md:flex items-center">
-            <Button size="sm">Get Quote</Button>
+            <Button size="sm" asChild>
+              <a href="#contact">Get Quote</a>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -74,8 +76,10 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="pt-2">
-                <Button className="w-full" size="sm">
-                  Get Quote
+                <Button className="w-full" size="sm" asChild>
+                  <a href="#contact" onClick={() => setIsOpen(false)}>
+                    Get Quote
+                  </a>
                 </Button>
               </div>
             </div>
