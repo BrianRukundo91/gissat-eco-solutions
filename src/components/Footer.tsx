@@ -52,14 +52,17 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-semibold mb-5 text-background border-b border-background/30 pb-2">
+              Quick Links
+            </h3>
+            <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a 
                     href={link.href}
-                    className="text-background/80 hover:text-background transition-colors duration-200"
+                    className="text-background/70 hover:text-background hover:pl-1 transition-all duration-200 text-sm flex items-center gap-2"
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
                     {link.name}
                   </a>
                 </li>
