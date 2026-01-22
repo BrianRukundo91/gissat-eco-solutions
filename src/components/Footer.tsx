@@ -96,24 +96,31 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-lg font-bold mb-5 text-white tracking-wider uppercase border-b-2 border-primary pb-2"
+                style={{ textShadow: '1px 1px 0 rgba(0,0,0,0.3), -1px -1px 0 rgba(255,255,255,0.1)' }}>
+              CONTACT US
+            </h3>
             <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-background/80 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-background/80">
-                    Muyenga, Kampala<br />
-                    Uganda
-                  </p>
-                </div>
+              <div className="flex items-start gap-2">
+                <span className="w-2 h-2 mt-1.5 bg-primary rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
+                <p className="text-white font-mono text-sm"
+                   style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}>
+                  Muyenga, Kampala<br />Uganda
+                </p>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-background/80" />
-                <p className="text-background/80">+256 (0) 414 510 263</p>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-primary rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
+                <p className="text-white font-mono text-sm"
+                   style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}>
+                  +256 (0) 414 510 263
+                </p>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-background/80" />
-                <p className="text-background/80">info@gissat.co.ug</p>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-primary rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
+                <p className="text-white font-mono text-sm"
+                   style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}>
+                  info@gissat.co.ug
+                </p>
               </div>
             </div>
           </div>
