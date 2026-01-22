@@ -111,25 +111,28 @@ export default function ChatbotWidget() {
               </Button>
             </div>
 
-            <ScrollArea className="h-80 pr-3">
-              <div className="space-y-3">
+            <ScrollArea className="h-72 pr-2">
+              <div className="space-y-2">
                 {messages.map((m, i) => (
                   <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
                     <div
                       className={
                         m.role === "user"
-                          ? "max-w-[85%] rounded-lg bg-primary text-primary-foreground px-3 py-2 text-sm"
-                          : "max-w-[85%] rounded-lg bg-secondary text-secondary-foreground px-3 py-2 text-sm"
+                          ? "max-w-[80%] rounded-2xl rounded-br-sm bg-primary text-primary-foreground px-3 py-2 text-sm"
+                          : "max-w-[80%] rounded-2xl rounded-bl-sm bg-muted text-foreground px-3 py-2 text-sm leading-relaxed"
                       }
-                    >
-                      {m.content}
-                    </div>
+                      dangerouslySetInnerHTML={{
+                        __html: m.content
+                          .replace(/\[([^\]]+)\]\(#([^)]+)\)/g, '<a href="#$2" class="text-primary underline hover:no-underline font-medium" onclick="document.getElementById(\'$2\')?.scrollIntoView({behavior:\'smooth\'});return false;">$1</a>')
+                          .replace(/\n/g, '<br/>')
+                      }}
+                    />
                   </div>
                 ))}
 
                 {isLoading && (
                   <div className="flex justify-start">
-                    <div className="max-w-[85%] rounded-lg bg-secondary text-secondary-foreground px-3 py-2 text-sm">
+                    <div className="max-w-[80%] rounded-2xl rounded-bl-sm bg-muted text-muted-foreground px-3 py-2 text-sm animate-pulse">
                       Typing…
                     </div>
                   </div>
