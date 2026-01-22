@@ -25,26 +25,15 @@ const About = () => {
                 <div className="text-center sm:text-left">
                   <h3 className="text-xl font-semibold text-foreground mb-2">Our Story</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
-                    Gissat, established in 1991, is a specialist, environmental consultancy located in Muyenga, Kampala,
-                    Uganda. Across a wide range of public, commercial and industrial projects, our team focuses on the
-                    practical aspects of environmental planning, engineering and science. Through our extensive level of
-                    knowledge and experience, we achieve our clients desired outcomes as efficiently as possible;
-                    delivering and communicating effective solutions in the field or in the boardroom. Over the years we
-                    have grown to become one of the leading firms in this industry in Uganda, providing a wealth of
-                    environmental expertise in the areas of Transport and Infrastructure, Tourism, Energy and Utilities,
-                    Telecommunication, Manufacturing to mention etc in both the Government and the private sectors. At
-                    Gissat, understanding the client’s needs is priority. We assist our clients with the integration of
-                    environmental considerations during project development, provide advice regarding actual or likely
-                    risks and impacts of development on natural or built environments as well as ensure compliance with
-                    the current environmental laws and regulations to promote sound environmental impact management. We
-                    provide in-depth, guidance and tools to help businesses understand what they need to do to assess
-                    and control risks in a work place and comply with health and safety laws. We believe that striking
-                    the appropriate balance upfront in the life cycle of a development project will limit the risks of
-                    costly delays in obtaining appropriate planning permissions, limit public resistance as well as
-                    limit unnecessary mitigation costs during the construction and operation stages of the development.
-                    We are founded on the principles of integrity and professionalism and as such, we have remained
-                    compliant with all regulatory requirements at all levels. This partly explains our expeditious
-                    execution of our clients’ work.
+                    Founded in 1991 and based in Muyenga, Kampala, Gissat is an environmental consultancy providing
+                    practical planning, engineering, and scientific services for public and private-sector projects in
+                    Uganda. The firm works across sectors such as transport, tourism, energy, utilities,
+                    telecommunications, and manufacturing, supporting clients with environmental risk management,
+                    regulatory compliance, and sustainable project development. Gissat focuses on understanding client
+                    needs early, integrating environmental and health-and-safety considerations throughout project
+                    lifecycles to reduce delays, costs, and community resistance. Operating on principles of integrity
+                    and professionalism, the company maintains full regulatory compliance and is known for efficient,
+                    reliable delivery of client work.
                   </p>
                   <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center space-x-2">
