@@ -77,21 +77,33 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Map placeholder */}
+            {/* Google Map embed */}
             <Card>
               <CardHeader>
                 <CardTitle>Find Us on the Map</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="h-64 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                    <p className="text-muted-foreground">
-                      Muyenga Tank Hill Road<br />
-                      Kampala, Uganda
-                    </p>
-                  </div>
+                <div className="h-64 rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7545!2d32.6001!3d0.2955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbc4bb530f11%3A0x7166ba75fb7c947c!2s26b%20Tank%20Hill%20Rd%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2sae!4v1704067200000!5m2!1sen!2sae"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Gissat Office Location"
+                  />
                 </div>
+                <a
+                  href="https://www.google.com/maps/dir//26b+Tank+Hill+Rd,+Kampala,+Uganda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-3 text-sm text-primary hover:underline"
+                >
+                  <MapPin className="w-4 h-4" />
+                  Get Directions
+                </a>
               </CardContent>
             </Card>
           </div>
