@@ -74,14 +74,19 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Our Services</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-bold mb-5 text-white tracking-wider uppercase border-b-2 border-primary pb-2"
+                style={{ textShadow: '1px 1px 0 rgba(0,0,0,0.3), -1px -1px 0 rgba(255,255,255,0.1)' }}>
+              Our Services
+            </h3>
+            <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
                   <a 
                     href={service.href}
-                    className="text-background/80 hover:text-background transition-colors duration-200"
+                    className="text-white hover:text-primary font-mono text-sm flex items-center gap-2 transition-all duration-200 hover:pl-1"
+                    style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}
                   >
+                    <span className="w-2 h-2 bg-primary rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
                     {service.name}
                   </a>
                 </li>
