@@ -28,19 +28,22 @@ const Navigation = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 rounded-md hover:bg-secondary"
-              >
-                {item.name}
-              </a>
-            ))}
-            <Button className="ml-4" size="sm">
-              Get Quote
-            </Button>
+          <div className="hidden md:flex flex-1 items-center justify-center">
+            <div className="flex items-center gap-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 rounded-md hover:bg-secondary"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center">
+            <Button size="sm">Get Quote</Button>
           </div>
 
           {/* Mobile menu button */}
