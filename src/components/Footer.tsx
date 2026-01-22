@@ -127,19 +127,26 @@ const Footer = () => {
         </div>
 
         {/* Bottom footer */}
-        <div className="border-t border-background/20 py-8">
+        <div className="border-t-2 border-primary py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-background/80 text-sm">
+            <div className="text-white font-mono text-sm"
+                 style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}>
               © {currentYear} Gissat Environmental Consultants. All rights reserved.
             </div>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-background/80 hover:text-background transition-colors duration-200">
+            <div className="flex space-x-6 text-sm font-mono">
+              <a href="#" 
+                 className="text-white hover:text-primary transition-colors duration-200"
+                 style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}>
                 Privacy Policy
               </a>
-              <a href="#" className="text-background/80 hover:text-background transition-colors duration-200">
+              <a href="#" 
+                 className="text-white hover:text-primary transition-colors duration-200"
+                 style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}>
                 Terms of Service
               </a>
-              <a href="#certification" className="text-background/80 hover:text-background transition-colors duration-200">
+              <a href="#certification" 
+                 className="text-white hover:text-primary transition-colors duration-200"
+                 style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)' }}>
                 Certifications
               </a>
             </div>
