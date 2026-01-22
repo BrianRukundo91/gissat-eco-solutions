@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,54 +7,40 @@ import { toast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { MessageCircle, Send, X } from "lucide-react";
 
-type ChatMsg = {
-  role: "user" | "assistant";
-  content: string;
-};
+type ChatMsg = { role: "user" | "assistant"; content: string };
 
-function scrollToId(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+const QUICK_PROMPTS = [
+  "What services do you offer?",
+  "Which sectors do you serve?",
+  "Show me project examples",
+  "I need a quote",
+];
 
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
   const [messages, setMessages] = useState<ChatMsg[]>([
     {
       role: "assistant",
-      content:
-        "Hi! I can answer questions about Gissat (services, sectors, projects, careers), or help you request a quote via the query form.",
+      content: "Hi! I can answer questions about Gissat (services, sectors, projects, careers), or help you request a quote via the query form.",
     },
   ]);
-
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!open) return;
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (open) bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [open, messages.length]);
 
-  const quickPrompts = useMemo(
-    () => [
-      "What services do you offer?",
-      "Which sectors do you serve?",
-      "Show me project examples",
-      "I need a quote",
-    ],
-    [],
-  );
+  const scrollToId = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const send = async (text: string) => {
     const trimmed = text.trim();
     if (!trimmed || isLoading) return;
 
-    // lightweight keyword routing to contact form
     if (/(quote|pricing|cost|budget|contact|talk to|email|phone|send a query)/i.test(trimmed)) {
-      // don't block the AI reply; just help the user get there.
       scrollToId("contact");
     }
 
@@ -68,124 +54,132 @@ export default function ChatbotWidget() {
       const { data, error } = await supabase.functions.invoke("site-assistant", {
         body: { messages: history },
       });
-
       if (error) throw error;
       const answer = (data?.reply as string | undefined) ?? "Sorry — I couldn't generate a reply.";
       setMessages((prev) => [...prev, { role: "assistant", content: answer }]);
     } catch (e) {
       console.error(e);
-      toast({
-        title: "Chatbot error",
-        description: "Please try again in a moment.",
-        variant: "destructive",
-      });
+      toast({ title: "Chatbot error", description: "Please try again in a moment.", variant: "destructive" });
     } finally {
       setIsLoading(false);
     }
   };
 
+  const formatMessage = (content: string) =>
+    content
+      .replace(
+        /\[([^\]]+)\]\(#([^)]+)\)/g,
+        '<a href="#$2" class="text-primary underline hover:no-underline font-medium" onclick="document.getElementById(\'$2\')?.scrollIntoView({behavior:\'smooth\'});return false;">$1</a>'
+      )
+      .replace(/\n/g, "<br/>");
+
+  if (!open) {
+    return (
+      <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2">
+        <span className="bg-primary text-primary-foreground text-sm font-medium px-3 py-2 rounded-full shadow-lg animate-pulse">
+          Chat with us!
+        </span>
+        <Button size="icon" className="h-12 w-12 rounded-full shadow-lg" onClick={() => setOpen(true)} aria-label="Open chat">
+          <MessageCircle className="h-5 w-5" />
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed bottom-5 right-5 z-50">
-      {open ? (
-        <Card className="w-[min(92vw,360px)] shadow-lg border border-border">
-          <CardHeader className="py-3 bg-primary rounded-t-lg">
-            <div className="flex items-center justify-between gap-3">
-              <CardTitle className="text-base text-primary-foreground">Gissat Assistant</CardTitle>
-              <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close chat" className="text-primary-foreground hover:bg-primary/80">
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          </CardHeader>
+      <Card className="w-[min(92vw,360px)] shadow-lg border border-border">
+        <CardHeader className="py-3 bg-primary rounded-t-lg">
+          <div className="flex items-center justify-between gap-3">
+            <CardTitle className="text-base text-primary-foreground">Gissat Assistant</CardTitle>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setOpen(false)}
+              aria-label="Close chat"
+              className="text-primary-foreground hover:bg-primary/80"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        </CardHeader>
 
-          <CardContent className="pt-0">
-            <div className="flex flex-wrap gap-2 mb-3">
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => {
-                  scrollToId("contact");
-                  setOpen(false);
-                }}
-              >
-                Open Query Form
-              </Button>
-            </div>
+        <CardContent className="pt-0">
+          <div className="flex flex-wrap gap-2 mb-3">
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => {
+                scrollToId("contact");
+                setOpen(false);
+              }}
+            >
+              Open Query Form
+            </Button>
+          </div>
 
-            <ScrollArea className="h-72 pr-2">
-              <div className="space-y-2">
-                {messages.map((m, i) => (
-                  <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
-                    <div
-                      className={
-                        m.role === "user"
-                          ? "max-w-[80%] rounded-2xl rounded-br-sm bg-primary text-primary-foreground px-3 py-2 text-sm"
-                          : "max-w-[80%] rounded-2xl rounded-bl-sm bg-muted text-foreground px-3 py-2 text-sm leading-relaxed"
-                      }
-                      dangerouslySetInnerHTML={{
-                        __html: m.content
-                          .replace(/\[([^\]]+)\]\(#([^)]+)\)/g, '<a href="#$2" class="text-primary underline hover:no-underline font-medium" onclick="document.getElementById(\'$2\')?.scrollIntoView({behavior:\'smooth\'});return false;">$1</a>')
-                          .replace(/\n/g, '<br/>')
-                      }}
-                    />
+          <ScrollArea className="h-72 pr-2">
+            <div className="space-y-2">
+              {messages.map((m, i) => (
+                <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
+                  <div
+                    className={
+                      m.role === "user"
+                        ? "max-w-[80%] rounded-2xl rounded-br-sm bg-primary text-primary-foreground px-3 py-2 text-sm"
+                        : "max-w-[80%] rounded-2xl rounded-bl-sm bg-muted text-foreground px-3 py-2 text-sm leading-relaxed"
+                    }
+                    dangerouslySetInnerHTML={{ __html: formatMessage(m.content) }}
+                  />
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="max-w-[80%] rounded-2xl rounded-bl-sm bg-muted text-muted-foreground px-3 py-2 text-sm animate-pulse">
+                    Typing…
                   </div>
-                ))}
+                </div>
+              )}
+              <div ref={bottomRef} />
+            </div>
+          </ScrollArea>
 
-                {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="max-w-[80%] rounded-2xl rounded-bl-sm bg-muted text-muted-foreground px-3 py-2 text-sm animate-pulse">
-                      Typing…
-                    </div>
-                  </div>
-                )}
-                <div ref={bottomRef} />
-              </div>
-            </ScrollArea>
-
-            <div className="mt-3 grid gap-2">
-              <div className="grid grid-cols-2 gap-1.5">
-                {quickPrompts.map((p) => (
-                  <Button key={p} variant="outline" size="sm" className="text-xs h-auto py-1.5 px-2 whitespace-normal text-left justify-start" onClick={() => send(p)} disabled={isLoading}>
-                    {p}
-                  </Button>
-                ))}
-              </div>
-
-              <form
-                className="flex gap-2"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  send(input);
-                }}
-              >
-                <Input
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about services, sectors, projects…"
+          <div className="mt-3 grid gap-2">
+            <div className="grid grid-cols-2 gap-1.5">
+              {QUICK_PROMPTS.map((p) => (
+                <Button
+                  key={p}
+                  variant="outline"
+                  size="sm"
+                  className="text-xs h-auto py-1.5 px-2 whitespace-normal text-left justify-start"
+                  onClick={() => send(p)}
                   disabled={isLoading}
-                  aria-label="Chat message"
-                />
-                <Button type="submit" disabled={isLoading || !input.trim()} aria-label="Send">
-                  <Send />
+                >
+                  {p}
                 </Button>
-              </form>
+              ))}
             </div>
-          </CardContent>
-        </Card>
-      ) : (
-        <div className="flex items-center gap-2">
-          <span className="bg-primary text-primary-foreground text-sm font-medium px-3 py-2 rounded-full shadow-lg animate-pulse">
-            Chat with us!
-          </span>
-          <Button
-            size="icon"
-            className="h-12 w-12 rounded-full shadow-lg"
-            onClick={() => setOpen(true)}
-            aria-label="Open chat"
-          >
-            <MessageCircle className="h-5 w-5" />
-          </Button>
-        </div>
-      )}
+
+            <form
+              className="flex gap-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                send(input);
+              }}
+            >
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask about services, sectors, projects…"
+                disabled={isLoading}
+                aria-label="Chat message"
+              />
+              <Button type="submit" disabled={isLoading || !input.trim()} aria-label="Send">
+                <Send />
+              </Button>
+            </form>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
