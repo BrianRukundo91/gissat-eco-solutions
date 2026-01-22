@@ -60,9 +60,9 @@ const Footer = () => {
                 <li key={index}>
                   <a 
                     href={link.href}
-                    className="text-background/70 hover:text-background hover:pl-1 transition-all duration-200 text-sm flex items-center gap-2"
+                    className="text-background hover:text-primary hover:pl-1 transition-all duration-200 text-sm flex items-center gap-2"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                     {link.name}
                   </a>
                 </li>
