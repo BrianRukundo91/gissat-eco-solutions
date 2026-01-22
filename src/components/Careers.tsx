@@ -2,114 +2,102 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Award, Users, Globe, Heart, Briefcase } from "lucide-react";
 
+const whyJoinReasons = [
+  {
+    icon: Award,
+    title: "Prestigious Projects",
+    description: "Delivering prestigious, life-changing, and innovative projects creates a business we can be proud to work for.",
+  },
+  {
+    icon: Users,
+    title: "The People",
+    description:
+      "We have an incredibly diverse range of people working towards common goals, and we set new standards of excellence as we go.",
+  },
+  {
+    icon: Globe,
+    title: "Sustainability",
+    description:
+      "For us, sustainability is about using our own ingenuity to deliver lasting value for our clients and the communities where we work.",
+  },
+];
+
+const staffFeedback = [
+  "High ethics / morals / standards",
+  "Diversity of work both in scale and complexity",
+  "Good reputation",
+  "Flexible work conditions",
+  "Work opportunities at regional and national levels",
+  "Supportive and friendly environment",
+  "Considerate leave entitlements",
+];
+
 const Careers = () => {
-  const whyJoinReasons = [
-    {
-      icon: Award,
-      title: "Prestigious Projects",
-      description: "Delivering prestigious, life-changing, and innovative projects creates a business we can be proud to work for."
-    },
-    {
-      icon: Users,
-      title: "The People",
-      description: "We have an incredibly diverse range of people working towards common goals, and we set new standards of excellence as we go. As a result, our offices have a great atmosphere, and our people enjoy their work."
-    },
-    {
-      icon: Globe,
-      title: "Sustainability",
-      description: "For us, sustainability is about using our own ingenuity to deliver lasting value for our clients, for the communities where we work, and for ourselves. It is about crossing the boundaries of conventional thinking to deliver efficiencies and unleash innovation in our solutions, advancing sustained economic, social, and environmental well-being."
-    }
-  ];
-
-  const staffFeedback = [
-    "High ethics / morals / standards",
-    "Diversity of work both in scale and complexity",
-    "Good reputation",
-    "Flexible work conditions",
-    "Work opportunities at regional and national levels",
-    "Supportive and friendly environment",
-    "Considerate leave entitlements"
-  ];
-
   return (
     <section id="careers" className="py-12 sm:py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="text-center mb-10 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-            Careers at Gissat
-          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Careers at Gissat</h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
             Build your career with Uganda's leading environmental consultancy.
           </p>
         </div>
 
-        {/* About working at Gissat */}
-        <div className="mb-10 sm:mb-16">
-          <Card className="bg-background">
-            <CardContent className="p-4 sm:p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                <div>
-                  <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                    <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-                    <h3 className="text-xl sm:text-2xl font-bold text-foreground">Join Our Team</h3>
-                  </div>
-                  <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
-                    <p>
-                      Gissat offers the experience and insight gained from more than 500 projects. Our growth and success is attributable to one key factor – our people! We invest highly in professional development and allow the opportunity for each employee to provide feedback in the direction of our business.
-                    </p>
-                    <p>
-                      As experts in a variety of environmental disciplines, we are committed to collaborate in a workplace enabling inspired, innovative and cutting-edge solutions.
-                    </p>
-                    <p>
-                      We have an excellent track record for successfully managing complex multidisciplinary and specialist studies for major strategic and development projects. Although we have grown considerably over the last few years, we pride ourselves on the fact that we have been able to maintain a "small company feel" as well as a very positive and cooperative culture amongst our employees.
-                    </p>
-                  </div>
+        <Card className="bg-background mb-10 sm:mb-16">
+          <CardContent className="p-4 sm:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              <div>
+                <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                  <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground">Join Our Team</h3>
                 </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                    <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground">What Our Staff Say</h3>
-                  </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
-                    The advantage of choosing a career with Gissat is best summarized by the feedback received at a recent staff development day:
+                <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
+                  <p>
+                    Gissat offers the experience and insight gained from more than 500 projects. Our growth and success is
+                    attributable to one key factor – our people!
                   </p>
-                  <ul className="space-y-2">
-                    {staffFeedback.map((feedback, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground text-sm sm:text-base">{feedback}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p>
+                    As experts in a variety of environmental disciplines, we are committed to collaborate in a workplace
+                    enabling inspired, innovative and cutting-edge solutions.
+                  </p>
+                  <p>
+                    We pride ourselves on maintaining a "small company feel" and a cooperative culture amongst our employees.
+                  </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+              <div>
+                <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                  <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground">What Our Staff Say</h3>
+                </div>
+                <ul className="space-y-2">
+                  {staffFeedback.map((feedback, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground text-sm sm:text-base">{feedback}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-        {/* Why Join Gissat */}
         <div className="mb-10 sm:mb-16">
-          <h3 className="text-xl sm:text-2xl font-bold text-foreground text-center mb-6 sm:mb-8">
-            Why Join Gissat?
-          </h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground text-center mb-6 sm:mb-8">Why Join Gissat?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {whyJoinReasons.map((reason, index) => {
-              const IconComponent = reason.icon;
+              const Icon = reason.icon;
               return (
                 <Card key={index} className="text-center bg-background">
                   <CardHeader>
                     <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                      <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
                     </div>
-                    <CardTitle className="text-lg sm:text-xl font-semibold text-foreground">
-                      {reason.title}
-                    </CardTitle>
+                    <CardTitle className="text-lg sm:text-xl font-semibold text-foreground">{reason.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                      {reason.description}
-                    </p>
+                    <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{reason.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -117,19 +105,13 @@ const Careers = () => {
           </div>
         </div>
 
-        {/* Application call-to-action */}
         <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Ready to Make a Difference?
-          </h3>
+          <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Make a Difference?</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            We're always looking for talented individuals to join our team. 
-            Send us your CV and tell us how you'd like to contribute to Uganda's 
-            environmental sustainability efforts.
+            We're always looking for talented individuals to join our team. Send us your CV and tell us how you'd like to
+            contribute to Uganda's environmental sustainability efforts.
           </p>
-          <Button size="lg">
-            Submit General Application
-          </Button>
+          <Button size="lg">Submit General Application</Button>
         </div>
       </div>
     </section>
