@@ -41,7 +41,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="Gissat Inc - For Exceptional Eco Solutions"
-                className="h-10 sm:h-12 w-auto brightness-0 invert"
+                className="h-14 w-auto object-contain brightness-0 invert"
               />
             </div>
             <p className="text-white/65 mb-6 leading-relaxed text-xs sm:text-sm font-mono" style={textShadowStyle}>
