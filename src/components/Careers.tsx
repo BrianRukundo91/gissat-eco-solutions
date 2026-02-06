@@ -111,7 +111,9 @@ const Careers = () => {
             We're always looking for talented individuals to join our team. Send us your CV and tell us how you'd like to
             contribute to Uganda's environmental sustainability efforts.
           </p>
-          <Button size="lg">Submit General Application</Button>
+          <Button size="lg" asChild>
+            <a href="/contact#contact">Submit General Application</a>
+          </Button>
         </div>
       </div>
     </section>

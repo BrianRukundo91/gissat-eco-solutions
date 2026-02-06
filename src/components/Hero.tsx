@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Award, Users, Globe } from "lucide-react";
 
@@ -7,7 +8,7 @@ const Hero = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzA0Nzg1NyIgZmlsbC1vcGFjaXR5PSIwLjAzIj4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjciLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-50"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 pt-24 sm:pt-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 pt-20 sm:pt-24 relative z-10">
         <div className="text-center">
           {/* Main heading */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
@@ -28,13 +29,13 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Button size="lg" className="min-w-[200px]" asChild>
-              <a href="#about">
+              <Link to="/about">
                 Learn More About Us
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="lg" className="min-w-[200px]" asChild>
-              <a href="#projects">View Our Projects</a>
+              <Link to="/projects">View Our Projects</Link>
             </Button>
           </div>
 
@@ -76,11 +77,21 @@ const Hero = () => {
               Explore our expertise:
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              <Button variant="secondary" size="sm" className="rounded-full">Mining & Minerals</Button>
-              <Button variant="secondary" size="sm" className="rounded-full">Infrastructure</Button>
-              <Button variant="secondary" size="sm" className="rounded-full">Oil & Gas</Button>
-              <Button variant="secondary" size="sm" className="rounded-full">Environmental Audits</Button>
-              <Button variant="secondary" size="sm" className="rounded-full">Impact Assessment</Button>
+              <Button variant="secondary" size="sm" className="rounded-full" asChild>
+                <Link to="/sectors">Mining & Minerals</Link>
+              </Button>
+              <Button variant="secondary" size="sm" className="rounded-full" asChild>
+                <Link to="/sectors">Infrastructure</Link>
+              </Button>
+              <Button variant="secondary" size="sm" className="rounded-full" asChild>
+                <Link to="/sectors">Oil & Gas</Link>
+              </Button>
+              <Button variant="secondary" size="sm" className="rounded-full" asChild>
+                <Link to="/services">Environmental Audits</Link>
+              </Button>
+              <Button variant="secondary" size="sm" className="rounded-full" asChild>
+                <Link to="/services">Impact Assessment</Link>
+              </Button>
             </div>
           </div>
         </div>

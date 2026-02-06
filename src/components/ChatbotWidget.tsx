@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -17,6 +18,7 @@ const QUICK_PROMPTS = [
 ];
 
 export default function ChatbotWidget() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -32,8 +34,21 @@ export default function ChatbotWidget() {
     if (open) bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [open, messages.length]);
 
-  const scrollToId = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const navigateTo = (path: string) => {
+    navigate(path);
+    setOpen(false);
+  };
+
+  // Map section names to routes
+  const sectionRoutes: Record<string, string> = {
+    "services": "/services",
+    "sectors": "/sectors",
+    "projects": "/projects",
+    "team": "/team",
+    "about": "/about",
+    "careers": "/careers",
+    "contact": "/contact",
+    "clients": "/clients",
   };
 
   const send = async (text: string) => {
@@ -41,7 +56,7 @@ export default function ChatbotWidget() {
     if (!trimmed || isLoading) return;
 
     if (/(quote|pricing|cost|budget|contact|talk to|email|phone|send a query)/i.test(trimmed)) {
-      scrollToId("contact");
+      navigateTo("/contact");
     }
 
     const nextUser: ChatMsg = { role: "user", content: trimmed };
@@ -65,21 +80,34 @@ export default function ChatbotWidget() {
     }
   };
 
-  const formatMessage = (content: string) =>
-    content
-      .replace(
-        /\[([^\]]+)\]\(#([^)]+)\)/g,
-        '<a href="#$2" class="text-primary underline hover:no-underline font-medium" onclick="document.getElementById(\'$2\')?.scrollIntoView({behavior:\'smooth\'});return false;">$1</a>'
-      )
-      .replace(/\n/g, "<br/>");
+  const formatMessage = (content: string) => {
+    // Convert markdown links [text](#section) to clickable route links
+    let formatted = content.replace(
+      /\[([^\]]+)\]\(#([^)]+)\)/g,
+      (match, text, section) => {
+        const route = sectionRoutes[section.toLowerCase()] || `/${section}`;
+        return `<a href="${route}" class="text-primary underline hover:no-underline font-medium" data-route="${route}">${text}</a>`;
+      }
+    );
+    return formatted.replace(/\n/g, "<br/>");
+  };
+
+  // Handle link clicks within chat messages
+  const handleMessageClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'A' && target.dataset.route) {
+      e.preventDefault();
+      navigateTo(target.dataset.route);
+    }
+  };
 
   if (!open) {
     return (
-      <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2">
-        <span className="bg-primary text-primary-foreground text-sm font-medium px-3 py-2 rounded-full shadow-lg animate-pulse">
+      <div className="fixed bottom-3 right-3 sm:bottom-5 sm:right-5 z-50 flex items-center gap-2">
+        <span className="hidden sm:inline bg-primary text-primary-foreground text-sm font-medium px-3 py-2 rounded-full shadow-lg animate-pulse">
           Chat with us!
         </span>
-        <Button size="icon" className="h-12 w-12 rounded-full shadow-lg" onClick={() => setOpen(true)} aria-label="Open chat">
+        <Button size="icon" className="h-12 w-12 sm:h-12 sm:w-12 rounded-full shadow-lg" onClick={() => setOpen(true)} aria-label="Open chat">
           <MessageCircle className="h-5 w-5" />
         </Button>
       </div>
@@ -87,9 +115,9 @@ export default function ChatbotWidget() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
-      <Card className="w-[min(92vw,360px)] shadow-lg border border-border">
-        <CardHeader className="py-3 bg-primary rounded-t-lg">
+    <div className="fixed bottom-0 right-0 sm:bottom-5 sm:right-5 z-50 w-full sm:w-auto">
+      <Card className="w-full sm:w-[min(92vw,360px)] rounded-none sm:rounded-lg shadow-lg border border-border">
+        <CardHeader className="py-3 bg-primary rounded-none sm:rounded-t-lg">
           <div className="flex items-center justify-between gap-3">
             <CardTitle className="text-base text-primary-foreground">Gissat Assistant</CardTitle>
             <Button
@@ -109,10 +137,7 @@ export default function ChatbotWidget() {
             <Button
               variant="secondary"
               size="sm"
-              onClick={() => {
-                scrollToId("contact");
-                setOpen(false);
-              }}
+              onClick={() => navigateTo("/contact")}
             >
               Open Query Form
             </Button>
@@ -128,6 +153,7 @@ export default function ChatbotWidget() {
                         ? "max-w-[80%] rounded-2xl rounded-br-sm bg-primary text-primary-foreground px-3 py-2 text-sm"
                         : "max-w-[80%] rounded-2xl rounded-bl-sm bg-muted text-foreground px-3 py-2 text-sm leading-relaxed"
                     }
+                    onClick={handleMessageClick}
                     dangerouslySetInnerHTML={{ __html: formatMessage(m.content) }}
                   />
                 </div>

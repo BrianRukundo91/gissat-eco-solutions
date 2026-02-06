@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ClientLogos1 from "@/assets/clients/client_logos_1.png";
 import ClientLogos2 from "@/assets/clients/client_logos_2.png";
 
@@ -46,12 +47,12 @@ const Clients = () => {
             Ready to experience the same level of professional service and environmental expertise? 
             Contact us today to discuss your project requirements.
           </p>
-          <a 
-            href="#contact" 
+          <Link 
+            to="/contact" 
             className="inline-flex items-center bg-primary hover:bg-primary/90 text-primary-foreground px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium transition-colors duration-200 text-sm sm:text-base"
           >
             Become Our Next Success Story
-          </a>
+          </Link>
         </div>
       </div>
     </section>

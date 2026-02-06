@@ -11,61 +11,63 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 140 25% 20%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%;
+    --foreground: 140 30% 15%;
 
-    --card: 140 20% 25%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 140 30% 15%;
 
-    --popover: 140 20% 22%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 30% 15%;
 
-    --primary: 85 60% 50%;
-    --primary-foreground: 140 30% 15%;
+    --primary: 140 45% 25%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 140 15% 30%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 140 30% 85%;
+    --secondary-foreground: 140 45% 20%;
 
-    --muted: 140 15% 28%;
-    --muted-foreground: 140 10% 70%;
+    --muted: 140 10% 94%;
+    --muted-foreground: 140 15% 40%;
 
-    --accent: 85 50% 45%;
-    --accent-foreground: 140 30% 15%;
+    --accent: 140 35% 35%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 140 15% 30%;
-    --input: 140 15% 32%;
-    --ring: 85 60% 50%;
+    --border: 140 15% 85%;
+    --input: 140 15% 90%;
+    --ring: 140 45% 25%;
 
     /* Custom design tokens for Gissat */
-    --forest-green: 140 25% 20%;
-    --lime-green: 85 60% 50%;
-    --sage-green: 140 20% 35%;
-    --light-green: 85 40% 60%;
+    --forest-green: 140 45% 20%;
+    --dark-green: 140 45% 25%;
+    --lime-green: 85 55% 45%;
+    --sage-green: 140 25% 45%;
+    --light-green: 140 40% 75%;
     --warm-gray: 140 5% 45%;
-    --light-gray: 140 5% 85%;
+    --light-gray: 140 5% 96%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(85 60% 50%), hsl(140 25% 25%));
-    --gradient-hero: linear-gradient(135deg, hsl(140 25% 18%), hsl(140 30% 25%));
+    /* Gradients - dark to light green */
+    --gradient-primary: linear-gradient(135deg, hsl(140 45% 25%), hsl(140 40% 55%));
+    --gradient-secondary: linear-gradient(135deg, hsl(140 45% 20%), hsl(140 35% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(140 45% 20%), hsl(85 45% 50%));
 
     /* Shadows */
-    --shadow-soft: 0 4px 6px -1px hsl(0 0% 0% / 0.2);
-    --shadow-medium: 0 10px 15px -3px hsl(0 0% 0% / 0.2);
-    --shadow-large: 0 25px 50px -12px hsl(0 0% 0% / 0.3);
+    --shadow-soft: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-medium: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
+    --shadow-large: 0 25px 50px -12px hsl(0 0% 0% / 0.15);
 
     --radius: 0.5rem;
 
-    --sidebar-background: 140 20% 22%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 85 60% 50%;
-    --sidebar-primary-foreground: 140 30% 15%;
-    --sidebar-accent: 140 15% 28%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 140 15% 30%;
-    --sidebar-ring: 85 60% 50%;
+    --sidebar-background: 140 45% 20%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 140 40% 55%;
+    --sidebar-primary-foreground: 140 45% 15%;
+    --sidebar-accent: 140 35% 30%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 140 30% 30%;
+    --sidebar-ring: 140 45% 25%;
     --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     --font-serif: "Crimson Pro", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
     --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
@@ -116,9 +118,65 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(180deg, hsl(140 45% 35%) 0%, hsl(140 40% 70%) 15%, hsl(140 35% 90%) 40%, hsl(0 0% 100%) 70%, hsl(0 0% 100%) 100%);
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Ensure minimum touch target size */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Smaller touch targets for nav items */
+  nav a, nav button {
+    min-height: 40px;
+    min-width: auto;
+  }
+
+  /* Override for icon buttons */
+  button[class*="size-icon"], [class*="h-12"][class*="w-12"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Small buttons can have smaller min heights */
+  button[class*="size-sm"], [class*="text-xs"] button {
+    min-height: 36px;
+    min-width: auto;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-green {
+    background: linear-gradient(135deg, hsl(140 45% 25%), hsl(140 40% 55%));
+  }
+  
+  .bg-gradient-green-dark {
+    background: linear-gradient(135deg, hsl(140 45% 20%), hsl(140 35% 45%));
+  }
+  
+  .bg-gradient-green-light {
+    background: linear-gradient(135deg, hsl(140 35% 45%), hsl(85 45% 55%));
+  }
+  
+  .text-gradient-green {
+    background: linear-gradient(135deg, hsl(140 45% 25%), hsl(140 40% 55%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

@@ -47,6 +47,16 @@ export default {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
+  			// Custom Gissat green palette
+  			gissat: {
+  				'dark': 'hsl(140 45% 20%)',
+  				'DEFAULT': 'hsl(140 45% 25%)',
+  				'medium': 'hsl(140 35% 35%)',
+  				'sage': 'hsl(140 25% 45%)',
+  				'light': 'hsl(140 40% 55%)',
+  				'pale': 'hsl(140 40% 75%)',
+  				'lime': 'hsl(85 45% 50%)',
+  			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
   				foreground: 'hsl(var(--sidebar-foreground))',

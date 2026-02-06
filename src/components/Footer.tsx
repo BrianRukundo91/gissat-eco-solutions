@@ -1,181 +1,63 @@
-import { Linkedin, Twitter, Facebook } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo_gissat.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "About Us", href: "#about" },
-    { name: "Our Services", href: "#services" },
-    { name: "Sectors", href: "#sectors" },
-    { name: "Projects", href: "#projects" },
-    { name: "Team", href: "#team" },
-    { name: "Careers", href: "#careers" },
+    { name: "About Us", href: "/about" },
+    { name: "Our Services", href: "/services" },
+    { name: "Careers", href: "/careers" },
   ];
-
-  const services = [
-    { name: "Environmental Impact Assessment", href: "#services" },
-    { name: "Environmental Audits", href: "#services" },
-    { name: "Permitting & Licensing", href: "#services" },
-    { name: "Waste Management", href: "#services" },
-    { name: "Air Quality Assessment", href: "#services" },
-    { name: "Sustainability Consulting", href: "#services" },
-  ];
-
-  const textShadowStyle = {
-    textShadow: "1px 1px 1px rgba(0,0,0,0.4), -1px -1px 1px rgba(255,255,255,0.08)",
-  };
-
-  const headingShadowStyle = {
-    textShadow: "1px 1px 0 rgba(0,0,0,0.3), -1px -1px 0 rgba(255,255,255,0.1)",
-  };
 
   return (
-    <footer className="bg-card text-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-10 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company info */}
-          <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-left">
-            <div className="mb-4 flex justify-center sm:justify-start">
-              <img
-                src={logo}
-                alt="Gissat Inc - For Exceptional Eco Solutions"
-                className="h-14 w-auto object-contain brightness-0 invert"
-              />
-            </div>
-            <p className="text-white/65 mb-6 leading-relaxed text-xs sm:text-sm font-mono" style={textShadowStyle}>
-              Uganda's leading environmental consultancy since 1991. Providing practical environmental solutions for
-              sustainable development.
-            </p>
-            <div className="flex space-x-4 justify-center sm:justify-start">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-[0_0_12px_rgba(132,204,22,0.5)]"
-              >
-                <Linkedin className="w-5 h-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-[0_0_12px_rgba(132,204,22,0.5)]"
-              >
-                <Twitter className="w-5 h-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-[0_0_12px_rgba(132,204,22,0.5)]"
-              >
-                <Facebook className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-
+    <footer className="bg-gradient-green-dark text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex flex-col items-center text-center space-y-10">
           {/* Quick Links */}
           <div>
-            <h3
-              className="text-base font-bold mb-5 text-white/75 tracking-wider uppercase border-b-2 border-primary pb-2"
-              style={headingShadowStyle}
-            >
+            <h3 className="text-lg font-semibold mb-5 text-white tracking-wide uppercase">
               Quick Links
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="flex flex-wrap justify-center gap-6">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-white/65 hover:text-primary font-mono text-xs flex items-center gap-2 transition-all duration-200 hover:pl-1"
-                    style={textShadowStyle}
+                  <Link
+                    to={link.href}
+                    className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200 hover:underline underline-offset-4"
                   >
-                    <span className="w-1.5 h-1.5 bg-primary/75 rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3
-              className="text-base font-bold mb-5 text-white/75 tracking-wider uppercase border-b-2 border-primary pb-2"
-              style={headingShadowStyle}
-            >
-              Our Services
-            </h3>
-            <ul className="space-y-2.5">
-              {services.map((service) => (
-                <li key={service.name}>
-                  <a
-                    href={service.href}
-                    className="text-white/65 hover:text-primary font-mono text-xs flex items-center gap-2 transition-all duration-200 hover:pl-1"
-                    style={textShadowStyle}
-                  >
-                    <span className="w-1.5 h-1.5 bg-primary/75 rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
-                    {service.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Divider */}
+          <div className="w-24 h-px bg-white/30"></div>
 
-          {/* Contact Info */}
+          {/* Contact Us */}
           <div>
-            <h3
-              className="text-base font-bold mb-5 text-white/75 tracking-wider uppercase border-b-2 border-primary pb-2"
-              style={headingShadowStyle}
-            >
+            <h3 className="text-lg font-semibold mb-5 text-white tracking-wide uppercase">
               Contact Us
             </h3>
-            <div className="space-y-2.5">
-              <div className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 mt-1 bg-primary/75 rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
-                <p className="text-white/65 font-mono text-xs" style={textShadowStyle}>
-                  Muyenga, Kampala
-                  <br />
-                  Uganda
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-primary/75 rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
-                <p className="text-white/65 font-mono text-xs" style={textShadowStyle}>
-                  +256 (0) 414 510 263
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-primary/75 rounded-sm shadow-[inset_1px_1px_2px_rgba(255,255,255,0.3),inset_-1px_-1px_2px_rgba(0,0,0,0.3)]" />
-                <p className="text-white/65 font-mono text-xs" style={textShadowStyle}>
-                  info@gissat.co.ug
-                </p>
-              </div>
+            <div className="space-y-3 text-sm text-white/80">
+              <p className="font-medium">Muyenga, Kampala, Uganda</p>
+              <p>+256 (0) 414 510 263</p>
+              <a 
+                href="mailto:info@gissat.co.ug" 
+                className="inline-block hover:text-white transition-colors duration-200 hover:underline underline-offset-4"
+              >
+                info@gissat.co.ug
+              </a>
             </div>
           </div>
         </div>
 
         {/* Bottom footer */}
-        <div className="border-t-2 border-primary py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-white/65 font-mono text-xs" style={textShadowStyle}>
-              © {currentYear} Gissat Environmental Consultants. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-xs font-mono">
-              <a href="#" className="text-white/65 hover:text-primary transition-colors duration-200" style={textShadowStyle}>
-                Privacy Policy
-              </a>
-              <a href="#" className="text-white/65 hover:text-primary transition-colors duration-200" style={textShadowStyle}>
-                Terms of Service
-              </a>
-              <a
-                href="#certification"
-                className="text-white/65 hover:text-primary transition-colors duration-200"
-                style={textShadowStyle}
-              >
-                Certifications
-              </a>
-            </div>
-          </div>
+        <div className="border-t border-white/20 mt-12 pt-6 text-center">
+          <p className="text-white/60 text-sm">
+            © {currentYear} Gissat Environmental Consultants. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

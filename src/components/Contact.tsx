@@ -7,12 +7,14 @@ import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Send } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", query: "" });
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "", query: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Query from ${formData.name}`);
-    const body = encodeURIComponent(`Name: ${formData.name}\n\nQuery:\n${formData.query}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nQuery:\n${formData.query}`
+    );
     window.location.href = `mailto:talk2gissat@gmail.com?subject=${subject}&body=${body}`;
   };
 
@@ -107,6 +109,32 @@ const Contact = () => {
                     required
                     className="mt-1"
                     placeholder="Enter your full name"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
+                    required
+                    className="mt-1"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="email">Email *</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                    required
+                    className="mt-1"
+                    placeholder="Enter your email address"
                   />
                 </div>
                 <div>

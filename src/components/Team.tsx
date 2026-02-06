@@ -175,7 +175,7 @@ const Team = () => {
                 <img
                   src={member.photo}
                   alt={member.name}
-                  className="w-24 h-24 mx-auto mb-4 rounded-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  className="w-36 h-36 sm:w-40 sm:h-40 mx-auto mb-4 rounded-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 />
                 <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                   {member.name}

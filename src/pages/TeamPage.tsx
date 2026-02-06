@@ -1,17 +1,17 @@
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
+import Team from "@/components/Team";
 import Footer from "@/components/Footer";
-import ChatbotWidget from "@/components/ChatbotWidget";
 
-const Index = () => {
+const TeamPage = () => {
   return (
     <div className="min-h-screen sm:border-x-2 md:border-x-4 border-gissat-dark">
       <Navigation />
-      <Hero />
+      <div className="pt-16 sm:pt-20">
+        <Team />
+      </div>
       <Footer />
-      <ChatbotWidget />
     </div>
   );
 };
 
-export default Index;
+export default TeamPage;
