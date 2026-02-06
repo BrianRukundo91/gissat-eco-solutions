@@ -1,4 +1,54 @@
-# Welcome to your Lovable project
+
+# Gissat Eco Solutions
+
+Gissat Eco Solutions is an Environment Management & Development Consultancy based in Kampala, Uganda. We are dedicated to delivering innovative, sustainable solutions for environmental management, compliance, and development projects across East Africa.
+
+## About Gissat
+
+**Location:** House 26 | Plot 7140A | Muyenga Tank Hill Road, P.O. BOX 21598 KAMPALA, UGANDA  
+**Contact:** talk2gissat@gmail.com | Tel/Fax: +256-700-411-411 | +256 760-539-469
+
+Gissat provides expert consultation, project management, and technical services in environmental impact assessment, compliance, and sustainability. Our team is committed to supporting clients in achieving their environmental and development goals through tailored, practical solutions.
+
+## Key Features
+
+- Modern, responsive website built with React, Vite, TypeScript, shadcn-ui, and Tailwind CSS
+- Contact form for direct queries and project consultations
+- Careers page for general applications and talent engagement
+- Project, client, and team showcase
+- Integrated with Supabase for backend services
+
+## Getting Started
+
+To run the project locally:
+
+```sh
+git clone <YOUR_GIT_URL>
+cd gissat-eco-solutions
+npm install
+npm run dev
+```
+
+Visit [http://localhost:8080](http://localhost:8080) to view the site.
+
+## Project Structure
+
+- `src/components/` — UI and page components
+- `src/pages/` — Main pages (About, Careers, Contact, etc.)
+- `src/integrations/supabase/` — Supabase client and types
+- `public/` — Static assets
+
+## Deployment
+
+You can deploy this project using your preferred platform (Vercel, Netlify, etc.) or via Lovable's Share -> Publish feature if using the Lovable platform.
+
+## Contributing
+
+We welcome contributions and collaboration! Please open an issue or submit a pull request for improvements or new features.
+
+## License
+
+This project is © Gissat Eco Solutions. All rights reserved.
 
 ## Project info
 
