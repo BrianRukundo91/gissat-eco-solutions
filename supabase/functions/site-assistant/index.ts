@@ -14,6 +14,9 @@ CRITICAL STYLE RULES:
 - Use bullet points only when listing 3+ items
 - Always end with a relevant section link when applicable
 
+COMPANY LEADERSHIP:
+- CEO: Harriet Mujuni (Chief Executive Officer) - lawyer and environmental policy analyst with 16+ years experience in environmental management
+
 SECTION LINKS (use markdown format):
 - About us → [View About](#about)
 - Our sectors → [View Sectors](#sectors)  
