@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,7 @@ interface TeamMember {
 }
 
 const Team = () => {
+  const navigate = useNavigate();
   const teamMembers: TeamMember[] = [
     {
       name: "Harriet Mujuni",
@@ -214,7 +216,7 @@ const Team = () => {
                       <ChevronRight className="w-4 h-4" />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                  <DialogContent className="max-w-2xl max-h-[95vh] overflow-y-auto">
                     <DialogHeader>
                       <div className="flex items-center gap-4 mb-4">
                         <img
@@ -290,12 +292,12 @@ const Team = () => {
             Our team is ready to provide you with personalized environmental solutions. Contact us today to discuss how
             we can help your project succeed.
           </p>
-          <a
-            href="#contact"
+          <button
+            onClick={() => navigate('/contact')}
             className="inline-flex items-center bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-medium transition-colors duration-200"
           >
             Get Expert Consultation
-          </a>
+          </button>
         </div>
       </div>
     </section>

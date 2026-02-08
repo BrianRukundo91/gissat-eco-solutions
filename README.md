@@ -6,7 +6,7 @@ Gissat Eco Solutions is an Environment Management & Development Consultancy base
 ## About Gissat
 
 **Location:** House 26 | Plot 7140A | Muyenga Tank Hill Road, P.O. BOX 21598 KAMPALA, UGANDA  
-**Contact:** talk2gissat@gmail.com | Tel/Fax: +256-700-411-411 | +256 760-539-469
+**Contact:** talk2gissat@gmail.com | +256 760-539-469
 
 Gissat provides expert consultation, project management, and technical services in environmental impact assessment, compliance, and sustainability. Our team is committed to supporting clients in achieving their environmental and development goals through tailored, practical solutions.
 

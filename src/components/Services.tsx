@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -25,6 +26,7 @@ import {
 } from "lucide-react";
 
 const Services = () => {
+  const navigate = useNavigate();
   const services = [
     {
       icon: Settings,
@@ -100,7 +102,7 @@ const Services = () => {
           {
             heading: "Stakeholder and Public Consultation and Engagement",
             paragraphs: [
-              "Gissat has a wealth of knowledge of both Stakeholder and Public consultation and engagement. This experience includes facilitating workshops to running public consultation events, offering a range of tools to give added value to stakeholder and/or public.",
+              "Gissat has a wealth of knowledge of both Stakeholder and Public consultation and engagement. This experience includes facilitating workshops to running public consultation events, offering a range of tools to give added value to stakeholder and public engagement processes.",
             ],
           },
         ],
@@ -416,7 +418,7 @@ const Services = () => {
                             Read more
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-2xl max-h-[85vh] overflow-hidden">
+                        <DialogContent className="max-w-2xl max-h-[95vh] overflow-hidden">
                           <DialogHeader>
                             <DialogTitle>{service.readMore.title}</DialogTitle>
                             <DialogDescription className="mt-2">
@@ -424,7 +426,7 @@ const Services = () => {
                             </DialogDescription>
                           </DialogHeader>
 
-                          <ScrollArea className="-mr-2 pr-2 max-h-[calc(85vh-9rem)]">
+                          <ScrollArea className="-mr-2 pr-2 max-h-[calc(95vh-11rem)]">
                             <div className="space-y-6">
                               {service.readMore.sections?.map((section, sIdx) => (
                                 <div key={sIdx} className="space-y-3">
@@ -471,12 +473,12 @@ const Services = () => {
               Our team of environmental experts can design tailored solutions for your unique challenges. 
               Contact us today to discuss your project requirements.
             </p>
-            <a 
-              href="#contact" 
+            <button
+              onClick={() => navigate('/contact')}
               className="inline-flex items-center bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-md font-medium transition-colors duration-200"
             >
               Get Expert Consultation
-            </a>
+            </button>
           </div>
         </div>
       </div>

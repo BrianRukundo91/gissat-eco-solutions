@@ -46,7 +46,6 @@ const Contact = () => {
                 <div className="flex items-start space-x-3">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <div className="text-muted-foreground">
-                    <p>Tel/Fax: 256-700-411-411</p>
                     <p>+256 760-539-469</p>
                   </div>
                 </div>

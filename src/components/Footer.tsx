@@ -40,15 +40,47 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-5 text-white tracking-wide uppercase">
               Contact Us
             </h3>
-            <div className="space-y-3 text-sm text-white/80">
-              <p className="font-medium">Muyenga, Kampala, Uganda</p>
-              <p>+256 (0) 414 510 263</p>
-              <a 
-                href="mailto:info@gissat.co.ug" 
-                className="inline-block hover:text-white transition-colors duration-200 hover:underline underline-offset-4"
-              >
-                info@gissat.co.ug
-              </a>
+            <div className="space-y-4 text-sm text-white/80">
+              {/* Physical Address */}
+              <div>
+                <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-2">
+                  Address
+                </p>
+                <p className="font-medium leading-relaxed">
+                  House 26 | Plot 7140A<br />
+                  Muyenga Tank Hill Road
+                </p>
+                <p className="mt-2 text-white/70">
+                  P.O. BOX 21598<br />
+                  KAMPALA, UGANDA
+                </p>
+              </div>
+
+              {/* Phone */}
+              <div>
+                <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1">
+                  Phone
+                </p>
+                <a 
+                  href="tel:+256760539469" 
+                  className="font-medium hover:text-white transition-colors duration-200 hover:underline underline-offset-4"
+                >
+                  +256 760-539-469
+                </a>
+              </div>
+
+              {/* Email */}
+              <div>
+                <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1">
+                  Email
+                </p>
+                <a 
+                  href="mailto:talk2gissat@gmail.com" 
+                  className="font-medium hover:text-white transition-colors duration-200 hover:underline underline-offset-4"
+                >
+                  talk2gissat@gmail.com
+                </a>
+              </div>
             </div>
           </div>
         </div>

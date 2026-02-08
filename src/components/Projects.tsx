@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,7 @@ interface Project {
 }
 
 const Projects = () => {
+  const navigate = useNavigate();
   const projects: Project[] = [
     {
       title: "Environmental Compliance Audit for Anderita Beach Hotel and Ancillary Facilities",
@@ -180,7 +182,7 @@ const Projects = () => {
                         <ChevronRight className="w-4 h-4 ml-1" />
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+                    <DialogContent className="max-w-3xl max-h-[95vh] overflow-y-auto">
                       <DialogHeader>
                         <div className="flex items-start gap-4 mb-4">
                           {project.image && (
@@ -278,11 +280,10 @@ const Projects = () => {
               Contact us to learn how we can help your organization achieve its environmental goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="default">
-                View All Projects
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </Button>
-              <Button variant="outline">
+              <Button 
+                variant="default"
+                onClick={() => navigate('/contact')}
+              >
                 Request Case Study
               </Button>
             </div>
