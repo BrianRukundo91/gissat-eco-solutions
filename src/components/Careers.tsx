@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Award, Users, Globe, Heart, Briefcase } from "lucide-react";
@@ -112,7 +113,7 @@ const Careers = () => {
             contribute to Uganda's environmental sustainability efforts.
           </p>
           <Button size="lg" asChild>
-            <a href="/contact#contact">Submit General Application</a>
+            <Link to="/contact#contact-form">Submit General Application</Link>
           </Button>
         </div>
       </div>

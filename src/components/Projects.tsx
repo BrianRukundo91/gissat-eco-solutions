@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { MapPin, Calendar, CheckCircle, ExternalLink, ChevronRight } from "lucide-react";
+import { MapPin, Calendar, CheckCircle, ChevronRight } from "lucide-react";
 
 // Project images
 import VocationalCenterImage from "@/assets/projects/vocational_dev_center.jpeg";
@@ -107,17 +107,6 @@ const Projects = () => {
   return (
     <section id="projects" className="py-12 sm:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-10 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-            Showcasing our commitment to environmental excellence through successful 
-            project implementations across Uganda's diverse sectors.
-          </p>
-        </div>
-
         {/* Projects grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {projects.map((project, index) => (

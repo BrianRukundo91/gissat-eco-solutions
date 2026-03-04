@@ -91,7 +91,7 @@ const Contact = () => {
             </Card>
           </div>
 
-          <Card>
+          <Card id="contact-form">
             <CardHeader>
               <CardTitle>Send Us a Query</CardTitle>
             </CardHeader>
