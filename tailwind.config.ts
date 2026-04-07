@@ -107,13 +107,20 @@ export default {
   				'Noto Color Emoji'
   			],
   			serif: [
+  				'Fraunces',
   				'Crimson Pro',
   				'ui-serif',
   				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
   				'serif'
+  			],
+  			display: [
+  				'Fraunces',
+  				'serif',
+  			],
+  			label: [
+  				'Syne',
+  				'ui-sans-serif',
+  				'sans-serif',
   			],
   			mono: [
   				'Geist Mono',

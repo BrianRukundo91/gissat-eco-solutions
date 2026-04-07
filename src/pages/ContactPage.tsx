@@ -3,10 +3,17 @@ import { useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { useSEO } from "@/hooks/useSEO";
 
 const ContactPage = () => {
-  const { hash } = useLocation();
+  useSEO({
+    title: "Contact Us | Environmental Consultancy Kampala Uganda",
+    description:
+      "Get in touch with Gissat Eco Solutions. Headquartered in Kampala, Uganda. Contact us for environmental audits, EIA services, and environmental consultancy.",
+    canonical: "https://gissat.org/contact",
+  });
 
+  const { hash } = useLocation();
   useEffect(() => {
     if (hash) {
       const el = document.querySelector(hash);

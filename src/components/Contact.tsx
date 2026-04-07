@@ -1,21 +1,44 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Send, CheckCircle } from "lucide-react";
+
+// ── EmailJS config ─────────────────────────────────────────────────────────
+// Replace these three values after setting up your EmailJS account
+const EMAILJS_SERVICE_ID  = "talk2gissat@gmail.com";
+const EMAILJS_TEMPLATE_ID = "template_n1lqhom";
+const EMAILJS_PUBLIC_KEY  = "uFZ6N0UoCUB0uEDvz";
+// ──────────────────────────────────────────────────────────────────────────
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", email: "", query: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Query from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nQuery:\n${formData.query}`
-    );
-    window.location.href = `mailto:talk2gissat@gmail.com?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:  formData.name,
+          from_email: formData.email,
+          phone:      formData.phone,
+          message:    formData.query,
+          to_email:   "talk2gissat@gmail.com",
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus("success");
+      setFormData({ name: "", phone: "", email: "", query: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -68,7 +91,7 @@ const Contact = () => {
               <CardContent>
                 <div className="h-64 rounded-lg overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7545!2d32.6001!3d0.2955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbc4bb530f11%3A0x7166ba75fb7c947c!2s26b%20Tank%20Hill%20Rd%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2sae!4v1704067200000!5m2!1sen!2sae"
+                    src="https://maps.google.com/maps?q=Muyenga+Tank+Hill+Road,Kampala,Uganda&t=&z=15&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -148,10 +171,30 @@ const Contact = () => {
                     placeholder="Please describe your query or how we can help you..."
                   />
                 </div>
-                <Button type="submit" className="w-full">
-                  Submit Query
-                  <Send className="w-4 h-4 ml-2" />
-                </Button>
+                {status === "success" ? (
+                  <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+                    <CheckCircle className="w-5 h-5 flex-shrink-0 text-green-600" />
+                    <div>
+                      <p className="font-semibold text-sm">Query sent successfully!</p>
+                      <p className="text-xs text-green-700 mt-0.5">We'll get back to you as soon as possible.</p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {status === "error" && (
+                      <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+                        Something went wrong. Please email us directly at{" "}
+                        <a href="mailto:talk2gissat@gmail.com" className="underline font-medium">
+                          talk2gissat@gmail.com
+                        </a>
+                      </p>
+                    )}
+                    <Button type="submit" className="w-full" disabled={status === "sending"}>
+                      {status === "sending" ? "Sending…" : "Submit Query"}
+                      <Send className="w-4 h-4 ml-2" />
+                    </Button>
+                  </>
+                )}
               </form>
             </CardContent>
           </Card>
