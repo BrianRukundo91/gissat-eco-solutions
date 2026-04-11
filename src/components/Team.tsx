@@ -1,17 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Linkedin, Mail, Users2, ChevronRight } from "lucide-react";
+import { Mail, Users2, ChevronRight } from "lucide-react";
 
-// Team member photos
+// Core team photos
 import HMPhoto from "@/assets/team/HM.png";
 import PKPhoto from "@/assets/team/PK.png";
 import ITPhoto from "@/assets/team/IT.png";
 import IBPhoto from "@/assets/team/IB.png";
 import ICPhoto from "@/assets/team/IC.png";
+
+// Technical team photos
+import AlexPhoto from "@/assets/team/Alex gissat.png";
+import PaulPhoto from "@/assets/team/Paul Malcom Gissat.png";
+import NesterPhoto from "@/assets/team/Nester Gissat.png";
+import RobertPhoto from "@/assets/team/Robert s gissat.png";
+import KevinPhoto from "@/assets/team/Kevin Gissat.png";
 
 interface TeamMember {
   name: string;
@@ -23,9 +29,124 @@ interface TeamMember {
   memberships?: string[];
 }
 
+const MemberCard = ({ member, large = false }: { member: TeamMember; large?: boolean }) => (
+  <Card className="group hover:shadow-lg transition-all duration-300 flex flex-col">
+    <CardHeader className="text-center pb-4">
+      <img
+        src={member.photo}
+        alt={member.name}
+        className={`mx-auto mb-4 rounded-full object-cover object-top group-hover:scale-105 transition-transform duration-300 ${
+          large ? "w-44 h-44 sm:w-48 sm:h-48" : "w-32 h-32 sm:w-36 sm:h-36"
+        }`}
+      />
+      <h3
+        className={`font-semibold text-foreground group-hover:text-primary transition-colors duration-300 ${
+          large ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
+        }`}
+      >
+        {member.name}
+      </h3>
+      <p className={`text-primary font-medium ${large ? "text-sm sm:text-base" : "text-xs sm:text-sm"}`}>
+        {member.role}
+      </p>
+    </CardHeader>
+
+    <CardContent className="space-y-4 flex flex-col flex-1">
+      <p className="text-muted-foreground text-sm leading-relaxed">{member.shortBio}</p>
+
+      <div>
+        <p className="text-sm font-medium text-foreground mb-2">Specialties:</p>
+        <div className="flex flex-wrap gap-1">
+          {member.specialties.slice(0, 3).map((specialty, i) => (
+            <Badge key={i} variant="outline" className="text-xs">
+              {specialty}
+            </Badge>
+          ))}
+          {member.specialties.length > 3 && (
+            <Badge variant="outline" className="text-xs">
+              +{member.specialties.length - 3} more
+            </Badge>
+          )}
+        </div>
+      </div>
+
+      <div className="mt-auto space-y-3">
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              variant="ghost"
+              className="w-full justify-between text-primary hover:text-primary/80 hover:bg-primary/10"
+            >
+              Read More
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-2xl max-h-[95vh] overflow-y-auto">
+            <DialogHeader>
+              <div className="flex items-center gap-4 mb-4">
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-16 h-16 rounded-full object-cover object-top"
+                />
+                <div>
+                  <DialogTitle className="text-2xl">{member.name}</DialogTitle>
+                  <p className="text-primary font-medium">{member.role}</p>
+                </div>
+              </div>
+            </DialogHeader>
+
+            <div className="space-y-6">
+              <div className="space-y-3">
+                {member.fullBio.map((paragraph, i) => (
+                  <p key={i} className="text-muted-foreground leading-relaxed text-sm">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-foreground mb-2">Areas of Expertise</h4>
+                <div className="flex flex-wrap gap-2">
+                  {member.specialties.map((specialty, i) => (
+                    <Badge key={i} variant="secondary" className="text-xs">
+                      {specialty}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              {member.memberships && member.memberships.length > 0 && (
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Professional Memberships</h4>
+                  <ul className="space-y-1">
+                    {member.memberships.map((membership, i) => (
+                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        {membership}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        <div className="flex space-x-2">
+          <button className="w-8 h-8 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors duration-200">
+            <Mail className="w-4 h-4 text-primary" />
+          </button>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+);
+
 const Team = () => {
   const navigate = useNavigate();
-  const teamMembers: TeamMember[] = [
+
+  const coreTeam: TeamMember[] = [
     {
       name: "Harriet Mujuni",
       role: "Chief Executive Officer",
@@ -143,9 +264,97 @@ const Team = () => {
     },
   ];
 
+  const technicalTeam: TeamMember[] = [
+    {
+      name: "Alex",
+      role: "Head – Technical Department & Projects Manager",
+      photo: AlexPhoto,
+      shortBio:
+        "Certified environment practitioner with nearly 8 years' experience in environmental impact assessment, solid waste and wastewater management, and circular waste management research.",
+      fullBio: [
+        "Alex is a BSc. Chemistry major, and holds an MSc in Environment and Natural Resources, both from Makerere University. He possesses additional training in Faecal Sludge Management, Municipal Solid Waste Management in Developing Countries, Planning and Design of Sanitation Systems and Technologies, Household Water Treatment and Safe Storage, Water Supply and Sanitation Policy in Developing Countries, Circular Economy-Sustainable Materials Management, Public Health Engineering in Humanitarian Contexts, Global Environmental Management, and Workplace Safety and Health.",
+        "He is a certified environment practitioner with nearly 8 years' experience in environmental and social impact assessment, environmental risk assessment, environmental monitoring and compliance auditing, resource recovery from waste, citywide inclusive sanitation and solid waste management. He is a specialist in solid waste/wastewater management, and is also an enthusiastic and active researcher in circular waste management. His research interest span solution-oriented context-relevant solutions to solid waste and wastewater management challenges in urban spaces.",
+        "He currently serves as the Head-Technical Department and Projects Manager at Gissat, and is responsible for co-ordination and oversight over the multi-disciplinary team of environment management specialists at the firm.",
+      ],
+      specialties: [
+        "Environmental & Social Impact Assessment",
+        "Solid Waste Management",
+        "Wastewater Management",
+        "Circular Waste Management",
+        "Environmental Monitoring & Compliance Auditing",
+        "Resource Recovery from Waste",
+        "Citywide Inclusive Sanitation",
+      ],
+    },
+    {
+      name: "Ssekyewa Paul Malcom",
+      role: "Environmental Engineer",
+      photo: PaulPhoto,
+      shortBio:
+        "Environmental Engineer with expertise in GIS-based spatial analysis, air and noise quality assessments, and occupational health and safety compliance.",
+      fullBio: [
+        "Paul is an Environmental Engineer with a strong technical background in environmental management and industrial compliance. He holds a Bachelor of Engineering in Environmental Engineering and Management from Kyambogo University. Paul specializes in the integration of Geographic Information Systems (GIS) for spatial analysis and mapping, primarily utilizing QGIS to provide data-driven environmental insights.",
+        "With practical expertise in Resource Monitoring and Compliance, Paul is highly skilled in conducting air and noise quality assessments to ensure adherence to national regulatory frameworks, with a dedicated focus on Occupational Health and Safety (OHS).",
+      ],
+      specialties: [
+        "Spatial Analysis",
+        "Mapping & Predictive Modeling",
+        "Environmental Monitoring",
+        "Risk Assessment",
+        "HSE Management Systems",
+      ],
+    },
+    {
+      name: "Njoina Nester Mpangire",
+      role: "Environmental Engineer",
+      photo: NesterPhoto,
+      shortBio:
+        "Environmental Engineer specializing in industrial sustainability, environmental audits, wastewater treatment, and GIS-enhanced site assessments across pharmaceutical, manufacturing, and agricultural sectors.",
+      fullBio: [
+        "Njoina Nester Mpangire is a dedicated Environmental Engineer with a focus on industrial sustainability and regulatory compliance. Holding a Bachelor of Engineering in Environmental Engineering and Management from Kyambogo University, she specializes in conducting rigorous environmental audits across diverse sectors, including the pharmaceutical, manufacturing, and agricultural industries.",
+        "Her technical expertise is centered on optimizing wastewater treatment, effluent control systems, and integrated waste management protocols to ensure clients remain fully compliant with national and international environmental standards.",
+        "Beyond her technical consultancy, Njoina is a committed advocate for climate action and professional excellence. She is an active member of the Environmental Engineering and Management Association, where she stays engaged with the latest advancements and best practices in the field.",
+        "Her professional background is further distinguished by her ability to integrate Geographic Information Systems (GIS) into environmental assessments, providing data-driven spatial insights that enhance the precision of site audits and resource management strategies.",
+        "By combining her engineering precision with a vision for long-term ecological resilience, Njoina ensures that every project contributes to a more sustainable and compliant industrial landscape.",
+      ],
+      specialties: [
+        "QGIS",
+        "Climate Change",
+        "Environmental & Social Impact Assessment",
+        "Wastewater Treatment",
+        "Environmental Auditing",
+        "Effluent Control Systems",
+      ],
+      memberships: ["Environmental Engineering and Management Association"],
+    },
+    {
+      name: "Robert Sseruwooza",
+      role: "Environmental Scientist",
+      photo: RobertPhoto,
+      shortBio:
+        "Environmental Scientist with about three years of experience in environmental monitoring, impact assessment, and auditing.",
+      fullBio: [
+        "Robert Sseruwooza is an Environmental Scientist with about three years of experience in environmental monitoring, impact assessment and auditing.",
+      ],
+      specialties: ["Environmental Impact Assessment", "Occupational Safety and Health"],
+    },
+    {
+      name: "Nasasira Kevin",
+      role: "Graduate Trainee",
+      photo: KevinPhoto,
+      shortBio:
+        "Environmental Engineering graduate from Kyambogo University, currently serving as a graduate trainee in the Technical Department.",
+      fullBio: [
+        "Nasasira Kevin is an Environmental Engineer by profession with a Bachelor's degree in Environmental Engineering from Kyambogo University. He is currently posted as a graduate trainee under the Technical Department at Gissat.",
+      ],
+      specialties: ["Environmental Engineering"],
+    },
+  ];
+
   return (
     <section id="team" className="py-12 sm:py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Section header */}
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Expert Team</h2>
@@ -168,125 +377,36 @@ const Team = () => {
           </p>
         </div>
 
-        {/* Team members grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {teamMembers.map((member, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-              <CardHeader className="text-center pb-4">
-                {/* Profile image */}
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  className="w-36 h-36 sm:w-40 sm:h-40 mx-auto mb-4 rounded-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                />
-                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                  {member.name}
-                </h3>
-                <p className="text-primary font-medium text-sm">{member.role}</p>
-              </CardHeader>
+        {/* Core Team */}
+        <div className="mb-14 sm:mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px flex-1 bg-border" />
+            <h3 className="text-lg sm:text-xl font-semibold text-foreground tracking-wide uppercase">Leadership &amp; Core Team</h3>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {coreTeam.map((member, index) => (
+              <MemberCard key={index} member={member} large />
+            ))}
+          </div>
+        </div>
 
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground text-sm leading-relaxed">{member.shortBio}</p>
-
-                {/* Specialties */}
-                <div>
-                  <p className="text-sm font-medium text-foreground mb-2">Specialties:</p>
-                  <div className="flex flex-wrap gap-1">
-                    {member.specialties.slice(0, 3).map((specialty, specialtyIndex) => (
-                      <Badge key={specialtyIndex} variant="outline" className="text-xs">
-                        {specialty}
-                      </Badge>
-                    ))}
-                    {member.specialties.length > 3 && (
-                      <Badge variant="outline" className="text-xs">
-                        +{member.specialties.length - 3} more
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-
-                {/* Read More Dialog */}
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-between text-primary hover:text-primary/80 hover:bg-primary/10"
-                    >
-                      Read More
-                      <ChevronRight className="w-4 h-4" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-2xl max-h-[95vh] overflow-y-auto">
-                    <DialogHeader>
-                      <div className="flex items-center gap-4 mb-4">
-                        <img
-                          src={member.photo}
-                          alt={member.name}
-                          className="w-16 h-16 rounded-full object-cover object-top"
-                        />
-                        <div>
-                          <DialogTitle className="text-2xl">{member.name}</DialogTitle>
-                          <p className="text-primary font-medium">{member.role}</p>
-                        </div>
-                      </div>
-                    </DialogHeader>
-
-                    <div className="space-y-6">
-                      {/* Full Bio */}
-                      <div className="space-y-3">
-                        {member.fullBio.map((paragraph, pIndex) => (
-                          <p key={pIndex} className="text-muted-foreground leading-relaxed text-sm">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-
-                      {/* All Specialties */}
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-2">Areas of Expertise</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {member.specialties.map((specialty, sIndex) => (
-                            <Badge key={sIndex} variant="secondary" className="text-xs">
-                              {specialty}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Memberships */}
-                      {member.memberships && member.memberships.length > 0 && (
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-2">Professional Memberships</h4>
-                          <ul className="space-y-1">
-                            {member.memberships.map((membership, mIndex) => (
-                              <li key={mIndex} className="text-sm text-muted-foreground flex items-start gap-2">
-                                <span className="text-primary mt-1">•</span>
-                                {membership}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  </DialogContent>
-                </Dialog>
-
-                {/* Contact links */}
-                <div className="flex space-x-2 pt-2">
-                  <button className="w-8 h-8 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-colors duration-200">
-                    <Linkedin className="w-4 h-4 text-primary" />
-                  </button>
-                  <button className="w-8 h-8 bg-accent/10 hover:bg-accent/20 rounded-full flex items-center justify-center transition-colors duration-200">
-                    <Mail className="w-4 h-4 text-accent" />
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Technical Team */}
+        <div className="mb-14 sm:mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px flex-1 bg-border" />
+            <h3 className="text-lg sm:text-xl font-semibold text-foreground tracking-wide uppercase">Technical Team</h3>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6">
+            {technicalTeam.map((member, index) => (
+              <MemberCard key={index} member={member} large={false} />
+            ))}
+          </div>
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-4">
           <h3 className="text-2xl font-bold text-foreground mb-4">Ready to Work with Our Experts?</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Our team is ready to provide you with personalized environmental solutions. Contact us today to discuss how
