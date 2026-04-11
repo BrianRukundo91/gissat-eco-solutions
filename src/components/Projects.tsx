@@ -269,8 +269,8 @@ const ProjectCard = ({ project }: { project: Project }) => (
       <div className="flex items-start justify-between gap-2 mb-2">
         <ServiceBadge type={project.serviceType} />
       </div>
-      <CardTitle className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300 leading-snug line-clamp-3">
-        {project.title}
+      <CardTitle className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300 leading-snug">
+        {project.shortTitle}
       </CardTitle>
       <div className="flex items-center gap-1.5 mt-1.5 text-xs text-muted-foreground">
         <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
