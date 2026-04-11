@@ -29,8 +29,8 @@ interface TeamMember {
   memberships?: string[];
 }
 
-const MemberCard = ({ member, large = false }: { member: TeamMember; large?: boolean }) => (
-  <Card className="group hover:shadow-lg transition-all duration-300 flex flex-col">
+const MemberCard = ({ member, large = false, isHead = false }: { member: TeamMember; large?: boolean; isHead?: boolean }) => (
+  <Card className={`group hover:shadow-lg transition-all duration-300 flex flex-col ${isHead ? "border-t-2 border-t-primary" : ""}`}>
     <CardHeader className="text-center pb-4">
       <img
         src={member.photo}
@@ -49,6 +49,11 @@ const MemberCard = ({ member, large = false }: { member: TeamMember; large?: boo
       <p className={`text-primary font-medium ${large ? "text-sm sm:text-base" : "text-xs sm:text-sm"}`}>
         {member.role}
       </p>
+      {isHead && (
+        <span className="inline-block mt-1 text-[10px] font-bold tracking-widest uppercase text-primary/60 border border-primary/20 rounded-full px-2 py-0.5">
+          Dept. Head
+        </span>
+      )}
     </CardHeader>
 
     <CardContent className="space-y-4 flex flex-col flex-1">
@@ -224,44 +229,6 @@ const Team = () => {
         "Environmental Engineering and Management Association of Kyambogo University",
       ],
     },
-    {
-      name: "Ibrah Muluya",
-      role: "Principal Operations Officer",
-      photo: IBPhoto,
-      shortBio:
-        "A proactive Office Administrator with 8+ years of experience managing office operations and developing efficient administrative processes.",
-      fullBio: [
-        "Mr. Muluya holds a Diploma in Office Administration. He is a proactive Office Administrator at Gissat with 8+ years of experience managing office operations.",
-        "He is adept at developing and maintaining detailed administrative and procedural processes that reduce redundancy, improve accuracy, and achieve organizational objectives.",
-        "Ibra is also skilled at working effectively with different departments (Technical, Finance and Administration) to coordinate information and resolve problems.",
-      ],
-      specialties: [
-        "Office Administration",
-        "Process Development",
-        "Cross-departmental Coordination",
-        "Operational Efficiency",
-      ],
-    },
-    {
-      name: "Isaiah Cula",
-      role: "Social Safeguards Specialist",
-      photo: ICPhoto,
-      shortBio:
-        "Experienced specialist in field research, socio-economic surveys, stakeholder engagement, and social impact assessment processes.",
-      fullBio: [
-        "Isaiah is an experienced social safeguards specialist involved in conducting field research, socio-economic surveys, management and analysis of data, undertaking stakeholder engagements & communication processes, socio-economic baseline data analyses and conducting general social research for a variety of projects.",
-        "This includes managing and coordinating the socio impact assessment processes and compiling SIA reports in line with the country's guidelines and legislation.",
-        "He is knowledgeable and experienced in addressing issues covered by the World Bank's ESF and social safeguards policies or similar policies in other international finance institutions in complex and challenging settings, and across sectors.",
-        "This includes experience with: social assessments and analyzing social risks & impacts for different population groups; involuntary resettlement in different socio-economic contexts and tenure systems; vulnerable groups' issues; coordination of transparent consultative and stakeholder engagement processes; grievance redress mechanisms, integration of relevant planning instruments such as Resettlement Action Plans in overall project planning and implementation; labor and working conditions; community health and safety; and cultural heritage.",
-      ],
-      specialties: [
-        "Social Impact Assessment",
-        "Stakeholder Engagement",
-        "Resettlement Action Plans",
-        "World Bank ESF Policies",
-        "Socio-economic Surveys",
-      ],
-    },
   ];
 
   const technicalTeam: TeamMember[] = [
@@ -284,6 +251,44 @@ const Team = () => {
         "Environmental Monitoring & Compliance Auditing",
         "Resource Recovery from Waste",
         "Citywide Inclusive Sanitation",
+      ],
+    },
+    {
+      name: "Isaiah Cula",
+      role: "Social Safeguards Specialist",
+      photo: ICPhoto,
+      shortBio:
+        "Experienced specialist in field research, socio-economic surveys, stakeholder engagement, and social impact assessment processes.",
+      fullBio: [
+        "Isaiah is an experienced social safeguards specialist involved in conducting field research, socio-economic surveys, management and analysis of data, undertaking stakeholder engagements & communication processes, socio-economic baseline data analyses and conducting general social research for a variety of projects.",
+        "This includes managing and coordinating the socio impact assessment processes and compiling SIA reports in line with the country's guidelines and legislation.",
+        "He is knowledgeable and experienced in addressing issues covered by the World Bank's ESF and social safeguards policies or similar policies in other international finance institutions in complex and challenging settings, and across sectors.",
+        "This includes experience with: social assessments and analyzing social risks & impacts for different population groups; involuntary resettlement in different socio-economic contexts and tenure systems; vulnerable groups' issues; coordination of transparent consultative and stakeholder engagement processes; grievance redress mechanisms, integration of relevant planning instruments such as Resettlement Action Plans in overall project planning and implementation; labor and working conditions; community health and safety; and cultural heritage.",
+      ],
+      specialties: [
+        "Social Impact Assessment",
+        "Stakeholder Engagement",
+        "Resettlement Action Plans",
+        "World Bank ESF Policies",
+        "Socio-economic Surveys",
+      ],
+    },
+    {
+      name: "Ibrah Muluya",
+      role: "Principal Operations Officer",
+      photo: IBPhoto,
+      shortBio:
+        "A proactive Office Administrator with 8+ years of experience managing office operations and developing efficient administrative processes.",
+      fullBio: [
+        "Mr. Muluya holds a Diploma in Office Administration. He is a proactive Office Administrator at Gissat with 8+ years of experience managing office operations.",
+        "He is adept at developing and maintaining detailed administrative and procedural processes that reduce redundancy, improve accuracy, and achieve organizational objectives.",
+        "Ibra is also skilled at working effectively with different departments (Technical, Finance and Administration) to coordinate information and resolve problems.",
+      ],
+      specialties: [
+        "Office Administration",
+        "Process Development",
+        "Cross-departmental Coordination",
+        "Operational Efficiency",
       ],
     },
     {
@@ -398,9 +403,9 @@ const Team = () => {
             <h3 className="text-lg sm:text-xl font-semibold text-foreground tracking-wide uppercase">Technical Team</h3>
             <div className="h-px flex-1 bg-border" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
             {technicalTeam.map((member, index) => (
-              <MemberCard key={index} member={member} large={false} />
+              <MemberCard key={index} member={member} large={false} isHead={index === 0} />
             ))}
           </div>
         </div>
