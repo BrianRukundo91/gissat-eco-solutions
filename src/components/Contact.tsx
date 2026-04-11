@@ -9,7 +9,7 @@ import { MapPin, Phone, Mail, Send, CheckCircle } from "lucide-react";
 
 // ── EmailJS config ─────────────────────────────────────────────────────────
 // Replace these three values after setting up your EmailJS account
-const EMAILJS_SERVICE_ID  = "talk2gissat@gmail.com";
+const EMAILJS_SERVICE_ID  = "service_eeecppf";
 const EMAILJS_TEMPLATE_ID = "template_n1lqhom";
 const EMAILJS_PUBLIC_KEY  = "uFZ6N0UoCUB0uEDvz";
 // ──────────────────────────────────────────────────────────────────────────
@@ -63,7 +63,7 @@ const Contact = () => {
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <div className="text-muted-foreground">
                     <p>House 26 | Plot 7140A | Muyenga Tank Hill Road</p>
-                    <p>P.O. BOX 21598 KAMPALA, UGANDA</p>
+                    <p>P.O. BOX 138929 KAMPALA, UGANDA</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">

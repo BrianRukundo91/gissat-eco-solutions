@@ -51,7 +51,7 @@ const Footer = () => {
                   Muyenga Tank Hill Road
                 </p>
                 <p className="mt-2 text-white/70">
-                  P.O. BOX 21598<br />
+                  P.O. BOX 138929<br />
                   KAMPALA, UGANDA
                 </p>
               </div>
