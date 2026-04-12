@@ -122,12 +122,6 @@ const competencies = [
 const ApplicationForm = ({ position }: { position: string }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [fileName, setFileName] = useState<string>("");
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    setFileName(file ? file.name : "");
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -214,30 +208,33 @@ const ApplicationForm = ({ position }: { position: string }) => {
       </div>
 
       <div className="space-y-1.5">
-        <Label className="flex items-center gap-1.5 text-sm">
-          <Upload className="w-3.5 h-3.5" /> Upload CV *
+        <Label htmlFor="app-cv-link" className="flex items-center gap-1.5 text-sm">
+          <Upload className="w-3.5 h-3.5" /> CV — Google Drive Link
         </Label>
-        <label className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-border rounded-lg cursor-pointer hover:border-primary/50 hover:bg-primary/5 transition-colors duration-200">
-          <div className="flex flex-col items-center gap-1 text-center px-4">
-            <Upload className="w-5 h-5 text-muted-foreground" />
-            {fileName ? (
-              <span className="text-sm font-medium text-primary">{fileName}</span>
-            ) : (
-              <>
-                <span className="text-sm font-medium text-foreground">Click to upload your CV</span>
-                <span className="text-xs text-muted-foreground">PDF, DOC, or DOCX — max 5MB</span>
-              </>
-            )}
-          </div>
-          <input
-            type="file"
-            name="cv"
-            accept=".pdf,.doc,.docx"
-            required
-            className="hidden"
-            onChange={handleFileChange}
-          />
-        </label>
+        <Input
+          id="app-cv-link"
+          name="cv_link"
+          type="url"
+          placeholder="https://drive.google.com/file/d/..."
+        />
+        <p className="text-xs text-muted-foreground">
+          Upload your CV to Google Drive, set sharing to <span className="font-medium text-foreground">"Anyone with the link can view"</span>, then paste the link above.
+        </p>
+      </div>
+
+      {/* Direct email option */}
+      <div className="flex items-start gap-3 rounded-lg border border-border bg-muted/30 px-4 py-3">
+        <Mail className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Prefer to attach your CV directly?{" "}
+          <a
+            href="mailto:talk2gissat@gmail.com?subject=Job Application — Accounts and Finance Officer"
+            className="text-primary font-medium hover:underline"
+          >
+            Email it to talk2gissat@gmail.com
+          </a>{" "}
+          with the subject line <span className="font-medium text-foreground">"Job Application — Accounts and Finance Officer"</span>.
+        </p>
       </div>
 
       {status === "error" && (
