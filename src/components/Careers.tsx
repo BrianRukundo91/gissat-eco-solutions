@@ -14,7 +14,7 @@ import {
 
 // ── Formspree endpoint ────────────────────────────────────────────────────────
 // Replace with your actual Formspree form endpoint after setup
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xlgarbvp";
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ── Data ──────────────────────────────────────────────────────────────────────
